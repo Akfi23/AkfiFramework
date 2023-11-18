@@ -2,11 +2,13 @@ using _Source.Code._AKFramework.AKECS.Runtime;
 using _Source.Code._AKFramework.AKEvents.Runtime;
 using _Source.Code._AKFramework.AKScenes.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
+using _Source.Code._Core.Installers;
+using _Source.Code.ECS.Systems;
 using Leopotam.EcsLite;
 using UnityEngine;
 using Zenject;
 
-namespace _Source.Code._Core.Installers
+namespace _Source.Code._AKFramework.Installers
 {
     [RequireComponent(typeof(SceneContext))]
     public sealed class ContextRoot : AKContextRoot
@@ -37,6 +39,7 @@ namespace _Source.Code._Core.Installers
             Container.Bind<IAKScenesService>().To<AKScenesService>().FromNew().AsSingle().NonLazy();
             Container.Bind<IAKTagsService>().To<AKTagsService>().FromNew().AsSingle().NonLazy();
             Container.Bind<IAKEventsService>().To<AKEventsService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<Service>().To<Service>().FromNew().AsSingle().NonLazy();
 
             AKDebug.Log("<color=yellow>Bindings Installed</color>");
         }
@@ -55,17 +58,17 @@ namespace _Source.Code._Core.Installers
                 _fixedUpdateSystems.Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem());
 #endif
             }
-
-        
+            
             _fixedUpdateSystems
                 .Init();
         
             _updateSystems
+                .Add(new RotatePlayerSystem())
                 .Init();
         
             _lateUpdateSystems
                 .Init();
-        
+            
             AKDebug.Log("<color=yellow>ECS Inited</color>");
         }
     

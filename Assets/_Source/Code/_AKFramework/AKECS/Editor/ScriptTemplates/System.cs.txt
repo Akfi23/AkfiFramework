@@ -1,5 +1,6 @@
 using Leopotam.EcsLite;
 using Zenject;
+using _Source.Code._AKFramework.AKECS.Runtime;
 
 namespace #NS# 
 {

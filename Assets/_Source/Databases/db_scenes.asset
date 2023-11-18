@@ -21,4 +21,4 @@ MonoBehaviour:
       _scene:
         _sceneAsset: {fileID: 102900000, guid: 6344901a4dd1a45d9a8d40514b84c0a6, type: 3}
         _sceneName: level_1
-        _scenePath: Assets/Scenes/levels/level_1.unity
+        _scenePath: Assets/_Source/Scenes/levels/level_1.unity

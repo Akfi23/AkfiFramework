@@ -32,7 +32,7 @@ namespace _Source.Code._AKFramework.AKEvents.Runtime
                     FileName = "AKEvents",
                     Usings = new[]
                     {
-                        "_Source.Code._AKFramework.AKEvents.Runtime",
+                        "using _Source.Code._AKFramework.AKEvents.Runtime;",
                     },
                     AKType = typeof(AKEvent),
                     Properties = productLayers

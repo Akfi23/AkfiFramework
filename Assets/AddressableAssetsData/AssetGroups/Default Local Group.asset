@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/Scenes/core/scene_context.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 6344901a4dd1a45d9a8d40514b84c0a6
+    m_Address: Assets/_Source/Scenes/levels/level_1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ca3695701c16e4d35915a60d13d06776, type: 2}
   m_SchemaSet:

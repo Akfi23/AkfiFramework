@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class TestIakService : IAKService
+public class Service : IAKService
 {
     [Inject]
     private SpritesDatabase _database;
