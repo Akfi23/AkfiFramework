@@ -1,0 +1,28 @@
+using Leopotam.EcsLite;
+using Zenject;
+
+namespace #NS# 
+{
+    public class #SCRIPTNAME# : AKEcsSystem
+    {        
+        private EcsWorld _world;
+        private EcsFilter _filter;
+        
+        //ECSPool here
+        
+        //Service here
+        
+        protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
+        {
+            _world = systems.GetWorld();
+        }
+        
+        public override void Tick(ref IEcsSystems systems)
+        {
+            foreach(var entity in _filter)
+            {
+                
+            }
+        }
+    }
+}

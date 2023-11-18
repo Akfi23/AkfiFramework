@@ -1,0 +1,7 @@
+﻿namespace #NS# 
+{
+    public struct #SCRIPTNAME# 
+    {
+        
+    }
+}
