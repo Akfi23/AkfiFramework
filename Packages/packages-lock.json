@@ -1,12 +1,5 @@
 {
   "dependencies": {
-    "com.gustavopsantos.reflex": {
-      "version": "https://github.com/gustavopsantos/reflex.git?path=/Assets/Reflex/#5.0.0",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "f8eae25b4cdc6b1637d5c0816b6d3d1457bac8af"
-    },
     "com.leopotam.ecslite": {
       "version": "https://github.com/Leopotam/ecslite.git",
       "depth": 0,
