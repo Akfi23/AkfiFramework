@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+using Leopotam.EcsLite;
+using UnityEngine;
+
+namespace _Source.Code._AKFramework.AKEcsLitePhysics3D.Runtime
+{
+    public struct AKCollision3D_Stay  : IEcsAutoReset<AKCollision3D_Stay>
+    {
+        public HashSet<EcsPackedEntity> Other;
+        public List<Collision> Collisions;
+        
+        public void AutoReset(ref AKCollision3D_Stay c)
+        {
+            if (c.Other == null)
+            {
+                c.Other = new HashSet<EcsPackedEntity>();
+                c.Collisions = new List<Collision>();
+                return;
+            }
+
+            c.Collisions.Clear();
+            c.Other.Clear();
+        }
+    }
+}

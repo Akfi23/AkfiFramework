@@ -12,6 +12,7 @@ public class Service : IAKService
     private void Init()
     {
         DebugStrings();
+        AKDebug.Log("DEBUG");
     }
 
     public void DebugStrings()

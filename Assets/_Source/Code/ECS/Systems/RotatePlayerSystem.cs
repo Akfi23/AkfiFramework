@@ -41,6 +41,8 @@ namespace _Source.Code.ECS.Systems
                 if(tag[0] != AKTags.Player__Player) continue;
                 
                 trasform.Rotate(Vector3.one * speed * Time.deltaTime);
+                
+                // _testService.DebugStrings();
             }
         }
     }

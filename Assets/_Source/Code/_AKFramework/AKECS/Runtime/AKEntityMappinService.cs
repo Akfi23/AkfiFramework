@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Source.Code._AKFramework.AKECS.Runtime
 {
-    public static class AKEntityMappingService
+    public static partial class AKEntityMappingService
     {
         private static readonly Dictionary<int, EcsPackedEntity> _packedEntities;
 
