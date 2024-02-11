@@ -59,6 +59,7 @@ namespace _Source.Code._AKFramework.Installers
             Container.Bind<SettingsService>().To<SettingsService>().FromNew().AsSingle().NonLazy();
             Container.Bind<TaskService>().To<TaskService>().FromNew().AsSingle().NonLazy();
             Container.Bind<VFXService>().To<VFXService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<TechService>().To<TechService>().FromNew().AsSingle().NonLazy();
 
             AKDebug.Log("<color=yellow>Bindings Installed</color>");
         }
