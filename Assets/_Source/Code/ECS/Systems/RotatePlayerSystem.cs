@@ -17,7 +17,6 @@ namespace _Source.Code.ECS.Systems
         private EcsPool<MovementSpeedRef> _speedPool;
         private EcsPool<TransformRef> _transformPool;
 
-        private Service _testService;
         protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
         {
             _world = systems.GetWorld();
@@ -26,8 +25,6 @@ namespace _Source.Code.ECS.Systems
             _tagPool = _world.GetPool<AKTagRef>();
             _speedPool = _world.GetPool<MovementSpeedRef>();
             _transformPool = _world.GetPool<TransformRef>();
-
-            _testService = container.Resolve<Service>();
         }
         
         public override void Tick(ref IEcsSystems systems)

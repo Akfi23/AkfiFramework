@@ -15,7 +15,7 @@ namespace _Source.Code._AKFramework.AKECS.Editor
     {
         private static string providerFileTemplate =
             @"using UnityEngine;
-using _Source.Code._Core.ECS.Components;
+using _Source.Code._AKFramework.AKECS.Runtime;;
 using @@COMPONENTNAMESPACE@@;
 using Sirenix.OdinInspector;
 

@@ -1,0 +1,62 @@
+﻿using _Client_.Scripts.Interfaces;
+using _Source.Code._AKFramework.AKTags.Runtime;
+using _Source.Code.Interfaces;
+using CodeStage.AntiCheat.Storage;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.UnityConverters.Math;
+using UnityEngine;
+using Zenject;
+
+namespace _Source.Code.Services
+{
+    public class SaveService : ISaveService
+    {
+        private JsonSerializerSettings _settings;
+        
+        [Inject]
+        private void Init()
+        {
+            _settings = new JsonSerializerSettings {
+                Converters = new JsonConverter[] 
+                {
+                    new Vector3Converter(),
+                    new StringEnumConverter(),
+                    new AKTagConverter()
+                },
+                ContractResolver = new DefaultContractResolver()
+            };
+        }
+    
+        public bool Has(string key)
+        {
+            return ObscuredPrefs.HasKey(key);
+        }
+
+        public T Load<T>(string key, T value)
+        {
+            return typeof(T).IsClass && typeof(T) != typeof(string)
+                ? JsonConvert.DeserializeObject<T>(ObscuredPrefs.Get(key, JsonConvert.SerializeObject(value, _settings)))
+                : ObscuredPrefs.Get(key, value);
+        }
+
+        public void Save<T>(string key, T value)
+        {
+            if (typeof(T).IsClass && typeof(T) != typeof(string))
+            {
+                ObscuredPrefs.Set(key, JsonConvert.SerializeObject(value, _settings));
+                ObscuredPrefs.Save();
+                return;
+            }
+
+            ObscuredPrefs.Set(key, value);
+            ObscuredPrefs.Save();
+        }
+
+        public void Remove(string key)
+        {
+            ObscuredPrefs.DeleteKey(key);
+        }
+    }
+}

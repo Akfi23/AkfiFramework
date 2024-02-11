@@ -1,10 +1,16 @@
 using _Source.Code._AKFramework.AKECS.Runtime;
 using _Source.Code._AKFramework.AKEvents.Runtime;
+using _Source.Code._AKFramework.AKPools.Runtime;
 using _Source.Code._AKFramework.AKScenes.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
+using _Source.Code._AKFramework.AKUI.Runtime;
+using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using _Source.Code._Core.Installers;
 using _Source.Code.ECS.Systems;
+using _Source.Code.Interfaces;
+using _Source.Code.Services;
 using Leopotam.EcsLite;
+using NodeCanvas.Framework;
 using UnityEngine;
 using Zenject;
 
@@ -37,9 +43,22 @@ namespace _Source.Code._AKFramework.Installers
         
             Container.Bind<IAKWorldService>().To<AKWorldService>().FromNew().AsSingle().NonLazy();
             Container.Bind<IAKScenesService>().To<AKScenesService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IAKUIService>().To<AKUIService>().FromNew().AsSingle().NonLazy();
             Container.Bind<IAKTagsService>().To<AKTagsService>().FromNew().AsSingle().NonLazy();
             Container.Bind<IAKEventsService>().To<AKEventsService>().FromNew().AsSingle().NonLazy();
-            Container.Bind<Service>().To<Service>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IAKPoolsService>().To<AKPoolsService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<EcsPoolService>().To<EcsPoolService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IInputService>().To<InputService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IItemService<int>>().To<ItemService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<UpgradesService>().To<UpgradesService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<ISaveService>().To<SaveService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<BuildingsService>().To<BuildingsService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<MaterialService>().To<MaterialService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IVibrationService>().To<VibrationService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<PlayerDataService>().To<PlayerDataService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<SettingsService>().To<SettingsService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<TaskService>().To<TaskService>().FromNew().AsSingle().NonLazy();
+            Container.Bind<VFXService>().To<VFXService>().FromNew().AsSingle().NonLazy();
 
             AKDebug.Log("<color=yellow>Bindings Installed</color>");
         }
@@ -64,6 +83,7 @@ namespace _Source.Code._AKFramework.Installers
         
             _updateSystems
                 .Add(new RotatePlayerSystem())
+                
                 .Init();
         
             _lateUpdateSystems

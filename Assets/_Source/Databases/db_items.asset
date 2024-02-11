@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f850dc1e520944e0950e5ad438de843, type: 3}
+  m_Name: db_items
+  m_EditorClassIdentifier: 
+  items:
+  - rid: 4696977599835668480
+  exchangeDatas: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 4696977599835668480
+      type: {class: ValueItem, ns: _Source.Code.Objects, asm: Assembly-CSharp}
+      data:
+        itemTag:
+          name: None
+          id: 00000000-0000-0000-0000-000000000000
+        count: 0
+        totalCollectedCount: 0
+        prefab:
+          name: None
+          id: 00000000-0000-0000-0000-000000000000
+        icon: {fileID: 0}
+        isUnlock: 0
+        hasCapacity: 0

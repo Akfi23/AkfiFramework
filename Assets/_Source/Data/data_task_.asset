@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e117100cdbd44d4849e49cd94bcd0d, type: 3}
+  m_Name: data_task_
+  m_EditorClassIdentifier: 
+  tasks:
+  - rid: 4696977599835668481
+  sheetURL: 1crlFmgVGCcU_9RbUtH-Qnu4-pLmtJI5AtqGvN-2b9tU
+  sheetNumName: Task
+  API_Key: AIzaSyCzFbubPm84GJ2svQtlym34sCWYtePVaik
+  references:
+    version: 2
+    RefIds:
+    - rid: 4696977599835668481
+      type: {class: CollectItemTask, ns: _Source.Code.Objects.Tasks, asm: Assembly-CSharp}
+      data:
+        icon: {fileID: 0}
+        title: 
+        description: 
+        _needAutofocusCamera: 0
+        _needArrowTargeting: 0
+        rewardData: []
+        targetItemTag:
+          name: None
+          id: 00000000-0000-0000-0000-000000000000
+        targetValue: 0
+        currentValue: 0

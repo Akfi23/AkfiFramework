@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1473659a08406fb19a4bf3c4292fb5, type: 3}
+  m_Name: db_ui
+  m_EditorClassIdentifier: 
+  screenGroupsContainers:
+  - _name: Game
+    _id: 1b673443-00f3-485d-8373-827f2f66365a
+    screenContainers:
+    - _name: Game Screen
+      _id: 89e75a8b-51e3-4589-92cc-d72397a6b5c5
+      buttonContainers: []
+      toggleContainers: []
