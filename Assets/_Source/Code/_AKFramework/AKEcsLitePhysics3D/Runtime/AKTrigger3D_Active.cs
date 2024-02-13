@@ -1,7 +1,6 @@
 using _Source.Code._AKFramework.AKECS.Runtime;
-
 #if POOL_EXIST
-using SFramework.Pools.Runtime;
+using _Source.Code._AKFramework.AKPools.Runtime;
 #endif
 
 namespace _Source.Code._AKFramework.AKEcsLitePhysics3D.Runtime 
