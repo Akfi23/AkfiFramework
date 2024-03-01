@@ -34,7 +34,7 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                     FileName = "AKPrefabs",
                     Usings = new[]
                     {
-                        "_Source.Code._AKFramework.AKPools.Runtime",
+                        "using _Source.Code._AKFramework.AKPools.Runtime;",
                     },
                     AKType = typeof(AKPrefab),
                     Properties = prefabs

@@ -14,8 +14,8 @@ namespace _Source.Code._AKFramework.AKPools.Editor
     [InitializeOnLoad]
     public static class AKAuthoringPoolResetGenerator
     {
-        private static string providerFileTemplate =
-            @"_Source.Code._AKFramework.AKECS.Runtime;
+        private static string providerFileTemplate = 
+            @"using _Source.Code._AKFramework.AKECS.Runtime;
 using @@COMPONENTNAMESPACE@@;
 using Leopotam.EcsLite;
 using _Source.Code._AKFramework.AKPools.Runtime;

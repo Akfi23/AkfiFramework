@@ -5,6 +5,7 @@ using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using _Source.Code.Objects;
+using AKFramework.Generated;
 using UnityEngine;
 using Zenject;
 
@@ -37,6 +38,9 @@ namespace _Source.Code.Services
                 item.Init(int.Parse(load[0]), loadTotalCollectedCount, bool.Parse(load[1]));
                 _itemsMapping.Add(item.ItemTag, item);
             }
+            
+            AKDebug.Log(Get(AKTags.Player__Player));
+            Add(AKTags.Player__Player,100);
         }
         
         public void Add(AKTag tag, int value)

@@ -18,3 +18,8 @@ MonoBehaviour:
     _tags:
     - _name: Player
       _id: c41e881c-4226-458b-9a52-13464595bb85
+  - _name: Items
+    _id: 0e410534-c7b9-420d-9b09-3c28df5a91da
+    _tags:
+    - _name: Money
+      _id: ee9a951c-7979-4904-9f92-af49e5fc84ac
