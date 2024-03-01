@@ -152,7 +152,7 @@ namespace _Source.Code.Data
             return sprite;
         }
 
-        private ItemData? FindItemData(string tagString, string countString)
+        private ItemData FindItemData(string tagString, string countString)
         {
             if (tagString == null || countString == null) return new ItemData(AKTags.Player__Player, 1);
             
