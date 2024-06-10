@@ -1,16 +1,16 @@
-﻿using _Source.Code._AKFramework.AKTags.Runtime;
+﻿using _Source.Code._AKFramework.AKCore.Runtime;
+using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
     public class VibrationService : IVibrationService
     {
-        [Inject]
+        [AKInject]
         private VibrationsDatabase _vibrationsDatabase;
-        [Inject]
+        [AKInject]
         private SettingsService _settingsService;
 
         private float PrevVibroTime { get; set; }

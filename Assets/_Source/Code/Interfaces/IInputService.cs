@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Source.Code.Interfaces
 {
-    public interface IInputService
+    public interface IInputService : IAKService
     {
         public bool IsActive { get; }
         public float Horizontal { get; }

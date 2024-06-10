@@ -1,10 +1,10 @@
 using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._Core.View;
 using Leopotam.EcsLite;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKECS.Runtime
 {
@@ -16,7 +16,8 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
         public EcsWorld World => _world;
         public EcsPackedEntity EcsPackedEntity => _ecsPackedEntity;
 
-        [Inject] private IAKWorldService _worldsService;
+        [AKInject]
+        private IAKWorldService _worldsService;
 
         [SerializeField] private bool _mapChildren;
 

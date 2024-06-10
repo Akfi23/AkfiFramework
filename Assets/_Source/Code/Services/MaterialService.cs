@@ -1,11 +1,11 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code.Databases;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class MaterialService
+    public class MaterialService : IAKService
     {
-        [Inject]
+        [AKInject]
         private MaterialDatabase _database;
         
     }

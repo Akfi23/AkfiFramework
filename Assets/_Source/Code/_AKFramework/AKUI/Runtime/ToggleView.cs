@@ -1,18 +1,18 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using _Source.Code._Core.View;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime
 {
     [RequireComponent(typeof(Toggle))]
     public class ToggleView : AKView
     {
-        [Inject]
+        [AKInject]
         protected IAKUIService uiService { get; set; }
 
-        [Inject]
+        [AKInject]
         protected IAKUIService uiCallbacks { get; set; }
 
         [SerializeField]

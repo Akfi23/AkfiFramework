@@ -1,9 +1,9 @@
 ﻿using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKUI.Runtime;
 using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
 {
@@ -19,7 +19,7 @@ namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
         
         public string GetConditionName() => $"Wait for {sfScreen} in valid state";
 
-        public bool CheckCondition(ref EcsWorld world, ref DiContainer container)
+        public bool CheckCondition(ref EcsWorld world, ref IAKContainer container)
         {
             if (!_init) Init(ref world, ref container);
 
@@ -31,7 +31,7 @@ namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
             return false;
         }
 
-        public void Init(ref EcsWorld world, ref DiContainer container)
+        public void Init(ref EcsWorld world, ref IAKContainer container)
         {
             _uiService = container.Resolve<IAKUIService>();
             _init = true;

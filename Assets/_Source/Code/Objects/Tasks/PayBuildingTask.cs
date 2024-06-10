@@ -1,9 +1,9 @@
 ﻿using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Objects.Tasks
 {
@@ -19,7 +19,7 @@ namespace _Source.Code.Objects.Tasks
 
         private BuildingsService _buildingsService;
 
-        public override void Init(DiContainer container, float value)
+        public override void Init(IAKContainer container, float value)
         {
             base.Init(container, value);
             currentValue = (int)value;

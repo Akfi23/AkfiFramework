@@ -1,10 +1,10 @@
 ﻿using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKEvents.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using AKFramework.Generated;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
 {
@@ -24,7 +24,7 @@ namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
 
         public string GetConditionName() => $"Stop {_timelineTag}";
 
-        public void Init(ref EcsWorld world, ref DiContainer container)
+        public void Init(ref EcsWorld world, ref IAKContainer container)
         {
             _eventsService = container.Resolve<IAKEventsService>();
 
@@ -38,7 +38,7 @@ namespace _Source.Code.Objects.Tutorial.TutorialStepConditions
             _init = true;
         }
 
-        public bool CheckCondition(ref EcsWorld world, ref DiContainer container)
+        public bool CheckCondition(ref EcsWorld world, ref IAKContainer container)
         {
             if (!_init) 
                 Init(ref world, ref container);

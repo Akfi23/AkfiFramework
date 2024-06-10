@@ -2,20 +2,20 @@ using System;
 using System.Collections.Generic;
 using _Client_.Scripts.Interfaces;
 using _Client_.Scripts.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using _Source.Code.Objects;
 using Sirenix.Utilities;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class BuildingsService
+    public class BuildingsService : IAKService
     {
-        [Inject] 
+        [AKInject] 
         private BuildingsDatabase _buildingDatabase;
-        [Inject]
+        [AKInject]
         private ISaveService _saveService;
 
         public Action<AKTag,AKTag, int> OnPay = delegate { };
@@ -27,7 +27,7 @@ namespace _Source.Code.Services
 
         public bool IsInitialized { get; private set; } = false;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             LoadService();

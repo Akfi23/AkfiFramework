@@ -1,9 +1,9 @@
-﻿using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
+﻿using _Source.Code._AKFramework.AKCore.Runtime;
+using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using _Source.Code._Core.View;
 using SFramework.UI.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime
 {
@@ -29,7 +29,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
             _button.onClick.AddListener(OnButtonClick);
         }
         
-        [Inject]
+        [AKInject]
         public void _InitializeButtonInternal(IAKUIService uiController)
         {
             if(uiService != null) return;

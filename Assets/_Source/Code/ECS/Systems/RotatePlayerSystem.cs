@@ -1,10 +1,10 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKECS.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.ECS.Components;
 using AKFramework.Generated;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.ECS.Systems
 {
@@ -17,7 +17,7 @@ namespace _Source.Code.ECS.Systems
         private EcsPool<MovementSpeedRef> _speedPool;
         private EcsPool<TransformRef> _transformPool;
 
-        protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
+        protected override void Setup(ref IEcsSystems systems, ref IAKContainer container)
         {
             _world = systems.GetWorld();
             _filter = _world.Filter<Player>().Inc<MovementSpeedRef>().Inc<AKTagRef>().End();

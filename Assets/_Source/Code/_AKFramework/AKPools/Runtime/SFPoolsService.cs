@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKECS.Runtime;
 using Leopotam.EcsLite;
 using UnityEngine;
 using UnityEngine.Pool;
-using Zenject;
 using Object = UnityEngine.Object;
 
 #if ECS_EXIST
@@ -16,9 +16,9 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
 {
     public class AKPoolsService : IAKPoolsService
     {
-        [Inject] 
-        private readonly DiContainer _container;
-        [Inject] 
+        [AKInject] 
+        private readonly IAKContainer _container;
+        [AKInject] 
         private readonly AKPoolsDatabase _akPoolsDatabase;
 
         public Action<GameObject, bool> OnPoolSpawn { get; set; } = delegate {  };
@@ -35,14 +35,14 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
 #if ECS_EXIST
 
         private EcsWorld _ecsWorld;
-        [Inject]
+        [AKInject]
         private IAKWorldService _worldsService;
 
         private HashSet<Type> _removeComponentHashSet = new();
         private readonly Dictionary<GameObject, List<IAKPoolReset>> _instanceToReset = new();
 #endif
 
-        [Inject]
+        [AKInject]
         protected async void Init()
         {
 #if ECS_EXIST

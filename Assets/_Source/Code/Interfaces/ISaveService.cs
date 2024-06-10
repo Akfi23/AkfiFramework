@@ -1,6 +1,6 @@
 ﻿namespace _Source.Code.Interfaces
 {
-    public interface ISaveService
+    public interface ISaveService : IAKService
     {
         public bool Has(string key);
         T Load<T>(string key, T value);

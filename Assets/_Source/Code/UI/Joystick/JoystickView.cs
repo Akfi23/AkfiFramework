@@ -1,15 +1,15 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._Core.View;
 using _Source.Code.Enums;
 using _Source.Code.Interfaces;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Zenject;
 
 namespace _Source.Code.UI.Joystick
 {
     public abstract class JoystickView : AKView, IPointerDownHandler, IPointerUpHandler, IDragHandler
     {
-        [Inject] 
+        [AKInject] 
         protected readonly IInputService inputService = null;
 
         [SerializeField] 
@@ -38,6 +38,7 @@ namespace _Source.Code.UI.Joystick
         protected override void Init()
         {
             base.Init();
+            
             inputService.HandleRange = handleRange;
             inputService.DeadZone = deadZone;
             inputService.SnapX = snapX;

@@ -1,8 +1,8 @@
 using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKNodeCanvas;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKEvents.Runtime.NodeCanvas
 {
@@ -15,7 +15,7 @@ namespace _Source.Code._AKFramework.AKEvents.Runtime.NodeCanvas
 
         private IAKEventsService _eventsListener;
 
-        protected override void Init(DiContainer injectionContainer)
+        protected override void Init(IAKContainer injectionContainer)
         {
             _eventsListener = injectionContainer.Resolve<IAKEventsService>();
             _eventsListener.AddListener(Event.value, Handler);

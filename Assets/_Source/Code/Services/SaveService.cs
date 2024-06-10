@@ -1,4 +1,5 @@
 ﻿using _Client_.Scripts.Interfaces;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Interfaces;
 using CodeStage.AntiCheat.Storage;
@@ -7,7 +8,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json.UnityConverters.Math;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
@@ -15,7 +15,7 @@ namespace _Source.Code.Services
     {
         private JsonSerializerSettings _settings;
         
-        [Inject]
+        [AKInject]
         private void Init()
         {
             _settings = new JsonSerializerSettings {

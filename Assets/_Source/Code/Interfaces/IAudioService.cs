@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Source.Code.Interfaces
 {
-    public interface IAudioService
+    public interface IAudioService : IAKService
     {
         void PlaySound(AKTag sfxTag,
             bool loop,

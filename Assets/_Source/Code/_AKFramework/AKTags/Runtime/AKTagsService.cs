@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Zenject;
+using _Source.Code._AKFramework.AKCore.Runtime;
 
 namespace _Source.Code._AKFramework.AKTags.Runtime
 {
@@ -9,7 +9,7 @@ namespace _Source.Code._AKFramework.AKTags.Runtime
 
         private AKTagsDatabase _database;
 
-        [Inject]
+        [AKInject]
         private void Init(AKTagsDatabase database)
         {
             _database = database;

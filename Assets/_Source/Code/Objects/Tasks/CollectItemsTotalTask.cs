@@ -1,9 +1,9 @@
 ﻿using System;
 using _Client_.Scripts.TaskSystem.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Objects.Tasks
 {
@@ -18,7 +18,7 @@ namespace _Source.Code.Objects.Tasks
         private int currentValue;
         [SerializeField] private int totalCollectedItemsCount;
 
-        public override void Init(DiContainer container, float value)
+        public override void Init(IAKContainer container, float value)
         {
             base.Init(container, value);
             currentValue = (int)value;

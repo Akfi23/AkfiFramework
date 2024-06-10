@@ -2,7 +2,7 @@
 
 namespace _Source.Code.Interfaces
 {
-    public interface IVibrationService
+    public interface IVibrationService : IAKService
     {
         void PlayVibro(AKTag vibroTag, float delay);
     }

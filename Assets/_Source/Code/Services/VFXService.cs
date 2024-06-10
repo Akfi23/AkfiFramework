@@ -1,25 +1,25 @@
 using System.Collections.Generic;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKPools.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
     public class VFXService
     {
-        [Inject] 
+        [AKInject] 
         private VFXDatabase _database;
-        [Inject]
+        [AKInject]
         private IAKPoolsService _poolsService;
 
         private readonly Dictionary<AKTag, VFXData> _vfxMapping = new();
 
         private AKPrefabSpawnSettings _settings = new();
 
-        [Inject]
+        [AKInject]
         private async void Init()
         {
             await UniTask.WaitUntil(() => _poolsService.IsInitialized);

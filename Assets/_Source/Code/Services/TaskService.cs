@@ -1,25 +1,23 @@
 using System;
 using System.Collections.Generic;
-using _Client_.Scripts.Interfaces;
-using _Client_.Scripts.Objects;
 using _Client_.Scripts.TaskSystem.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using _Source.Code.Objects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class TaskService
+    public class TaskService : IAKService
     {
-        [Inject]
+        [AKInject]
         private BuildingsService _buildingService;
-        [Inject]
+        [AKInject]
         private TaskDatabase _database;
-        [Inject] 
+        [AKInject] 
         private ISaveService _saveService;
 
         public Action OnTaskChange = delegate {  };
@@ -31,8 +29,8 @@ namespace _Source.Code.Services
 
         private TaskContainer _container = null;
 
-        [Inject]
-        private void Init(DiContainer container)
+        [AKInject]
+        private void Init(IAKContainer container)
         {
             OnTaskUpdate += OnTaskUpdateCalled;
             OnTaskComplete += OnTaskCompleteCalled;
@@ -40,7 +38,7 @@ namespace _Source.Code.Services
             LoadService(container);
         }
 
-        public void LoadService(DiContainer container)
+        public void LoadService(IAKContainer container)
         {
             _container = new TaskContainer
             {

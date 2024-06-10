@@ -1,9 +1,9 @@
 ﻿using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKNodeCanvas;
 using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime.NodeCanvas
 {
@@ -17,7 +17,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime.NodeCanvas
 
         private IAKUIService _uiService;
 
-        protected override void Init(DiContainer injectionContainer)
+        protected override void Init(IAKContainer injectionContainer)
         {
             _uiService = injectionContainer.Resolve<IAKUIService>();
         }

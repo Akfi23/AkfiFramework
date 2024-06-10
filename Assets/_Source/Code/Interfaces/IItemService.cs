@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Source.Code.Interfaces
 {
-    public interface IItemService<T>
+    public interface IItemService<T> : IAKService
     {
         Action<AKTag> OnItemChange { get; set; }
         Action<AKTag, T> OnItemAdd { get; set; }

@@ -1,22 +1,22 @@
-﻿using _Source.Code._AKFramework.AKECS.Runtime;
+﻿using _Source.Code._AKFramework.AKCore.Runtime;
+using _Source.Code._AKFramework.AKECS.Runtime;
 using _Source.Code._AKFramework.AKPools.Runtime;
 using _Source.Code.ECS.Components;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class EcsPoolService
+    public class EcsPoolService : IAKService
     {
-        [Inject]
+        [AKInject]
         private IAKWorldService _worldsService;
-        [Inject] 
+        [AKInject] 
         private IAKPoolsService _poolsService;
 
         private EcsPool<Spawned> _spawnedPool;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             _poolsService.OnPoolSpawn += Spawn;

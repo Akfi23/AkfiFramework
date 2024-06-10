@@ -1,10 +1,10 @@
 using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Interfaces;
 using _Source.Code.Services;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Objects.Tasks
 {
@@ -24,13 +24,13 @@ namespace _Source.Code.Objects.Tasks
         [SerializeField][GUIColor("lightyellow")][SuffixLabel(SdfIconType.CashCoin)]
         protected ItemData[] rewardData;
 
-        protected DiContainer _container;
+        protected IAKContainer _container;
         protected IItemService<int> _itemService;
         protected TaskService _taskService;
         // protected ISFAnalyticsService _analyticsService;
         protected TechService _techService;
 
-        public virtual void Init(DiContainer container, float value)
+        public virtual void Init(IAKContainer container, float value)
         {
             _container = container;
             _itemService = container.Resolve<IItemService<int>>();

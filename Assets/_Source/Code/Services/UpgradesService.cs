@@ -2,22 +2,22 @@ using System;
 using System.Collections.Generic;
 using _Client_.Scripts.Interfaces;
 using _Client_.Scripts.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using _Source.Code.Objects;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class UpgradesService
+    public class UpgradesService : IAKService
     {
-        [Inject]
+        [AKInject]
         private UpgradesDatabase _upgradesDatabase;
-        [Inject]
+        [AKInject]
         private ISaveService _saveService;
-        [Inject] 
+        [AKInject] 
         private TaskService _taskService;
         
         public Action<AKTag> OnGetUpgrade = delegate { };
@@ -27,7 +27,7 @@ namespace _Source.Code.Services
 
         private Dictionary<Tuple<AKTag, int>, Tuple<int, int>> _constraintsDataMapping = new();
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             _upgradesMapping.Clear();
@@ -47,6 +47,8 @@ namespace _Source.Code.Services
                 _constraintsDataMapping.Add(new Tuple<AKTag, int>(constraintData.UpgradeTag, constraintData.TargetUpgradeLevelIndex),
                     new Tuple<int, int>(constraintData.LevelIndex, constraintData.TaskIndex));
             }
+            
+            AKDebug.Log("JOPA");
         }
 
         public string GetUpgradeName(AKTag upgradeTag)

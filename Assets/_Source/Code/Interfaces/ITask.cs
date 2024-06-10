@@ -1,7 +1,7 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Objects;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Interfaces
 {
@@ -20,7 +20,7 @@ namespace _Source.Code.Interfaces
         bool NeedAutofocusCamera();
         bool NeedArrowTargeting();
 
-        void Init(DiContainer container, float value);
+        void Init(IAKContainer container, float value);
         void Start();
         void DoAction();
         void GetReward();

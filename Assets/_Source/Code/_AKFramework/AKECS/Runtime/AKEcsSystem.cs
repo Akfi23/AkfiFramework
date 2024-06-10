@@ -1,5 +1,5 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using Leopotam.EcsLite;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKECS.Runtime
 {
@@ -7,8 +7,8 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
     {
         public void Init(IEcsSystems systems)
         {
-            var container = systems.GetShared<DiContainer>();
-            container.LazyInject(this);
+            var container = systems.GetShared<IAKContainer>();
+            container.Inject(this);
             Setup(ref systems, ref container);
         }
 
@@ -17,7 +17,7 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
             Tick(ref systems);
         }
 
-        protected virtual void Setup(ref IEcsSystems systems, ref DiContainer container)
+        protected virtual void Setup(ref IEcsSystems systems, ref IAKContainer container)
         {
         }
 

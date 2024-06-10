@@ -1,8 +1,8 @@
-﻿using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
+﻿using _Source.Code._AKFramework.AKCore.Runtime;
+using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using _Source.Code._Core.View;
 using SFramework.UI.Runtime;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime
 {
@@ -29,7 +29,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
             base.Awake();
         }
 
-        [Inject]
+        [AKInject]
         public void _InitializeScreenInternal(IAKUIService uiController)
         {
             if(_uiServiceInternal != null) return;

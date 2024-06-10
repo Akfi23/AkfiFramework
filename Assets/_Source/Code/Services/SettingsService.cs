@@ -1,14 +1,13 @@
 ﻿using System;
-using _Client_.Scripts.Interfaces;
 using _Client_.Scripts.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code.Interfaces;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class SettingsService
+    public class SettingsService : IAKService
     {
-        [Inject]
+        [AKInject]
         private ISaveService _saveService;
         // [Inject]
         // private ISFAnalyticsService _analyticsService;
@@ -23,7 +22,7 @@ namespace _Source.Code.Services
 
         private SettingsDataContainer _container;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             _container = _saveService.Load("Settings", new SettingsDataContainer());

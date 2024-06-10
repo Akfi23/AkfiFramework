@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKPools.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
@@ -7,17 +8,16 @@ using _Source.Code.Interfaces;
 using _Source.Code.Objects;
 using AKFramework.Generated;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
     public class ItemService : IItemService<int>
     {
-        [Inject] 
+        [AKInject] 
         private ItemsDatabase _itemsDatabase;
-        [Inject] 
+        [AKInject] 
         private ISaveService _saveService;
-        [Inject]
+        [AKInject]
         private UpgradesService _upgradesService;
 
         public Action<AKTag> OnItemChange { get; set; } = delegate {  };
@@ -28,7 +28,7 @@ namespace _Source.Code.Services
 
         private IItem _item;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             foreach (var item in _itemsDatabase.Items)

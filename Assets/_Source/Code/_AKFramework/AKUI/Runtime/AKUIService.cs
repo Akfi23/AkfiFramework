@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
 using SFramework.UI.Runtime;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime
 {
@@ -31,7 +31,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
 
         private bool _isLoaded;
 
-        [Inject]
+        [AKInject]
         public void Init(AKUIDatabase database)
         {
             _database = database;

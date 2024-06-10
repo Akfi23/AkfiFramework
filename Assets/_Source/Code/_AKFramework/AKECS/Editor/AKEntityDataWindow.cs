@@ -36,7 +36,7 @@ namespace _Source.Code._AKFramework.AKECS.Editor
 
         public AKEntityDataWindow()
         {
-            _world = AKContextRoot.RootContainer.Resolve<IAKWorldService>().Default;
+            _world = AKContextRoot.Container.Resolve<IAKWorldService>().Default;
             AKEntity.OnPingEntity -= PingEntity;
             AKEntity.OnPingEntity += PingEntity;
         }

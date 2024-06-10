@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime.Interfaces
 {
-    public interface IAKUIService
+    public interface IAKUIService : IAKService
     {
 
         bool IsLoaded(AKScreen screen);

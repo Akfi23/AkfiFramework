@@ -1,8 +1,8 @@
 using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKNodeCanvas;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKScenes.Runtime.NodeCanvas
 {
@@ -13,7 +13,7 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime.NodeCanvas
     {
         public BBParameter<AKScene> Scene;
 
-        protected override void Init(DiContainer injectionContainer)
+        protected override void Init(IAKContainer injectionContainer)
         {
             injectionContainer.Resolve<IAKScenesService>().OnSceneLoad += scene =>
             {

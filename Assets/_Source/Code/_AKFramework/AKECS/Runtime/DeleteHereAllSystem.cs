@@ -1,5 +1,5 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using Leopotam.EcsLite;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKECS.Runtime
 {
@@ -10,7 +10,7 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
 
         private EcsPool<T> _pool;
 
-        protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
+        protected override void Setup(ref IEcsSystems systems, ref IAKContainer container)
         {
             _world = systems.GetWorld();
             _filter = _world.Filter<T>().End();

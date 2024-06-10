@@ -1,8 +1,8 @@
 ﻿using System.Linq;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKECS.Runtime;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKEcsLitePhysics3D.Runtime
 {
@@ -25,7 +25,7 @@ namespace _Source.Code._AKFramework.AKEcsLitePhysics3D.Runtime
 
         private EcsPool<AKTrigger3D_Active> _triggerActiveEventPool;
 
-        protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
+        protected override void Setup(ref IEcsSystems systems, ref IAKContainer container)
         {
             _world = systems.GetWorld();
             _boxFilter = _world.Filter<AKBoxTriggerCastEvent>().Inc<AKTriggerCastEvent>().End();

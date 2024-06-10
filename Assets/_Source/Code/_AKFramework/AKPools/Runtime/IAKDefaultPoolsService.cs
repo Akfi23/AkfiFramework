@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using UnityEngine;
 using UnityEngine.Pool;
-using Zenject;
 using Object = UnityEngine.Object;
 
 namespace _Source.Code._AKFramework.AKPools.Runtime
 {
     public class IAKDefaultPoolsService : IAKPoolsService
     {
-        [Inject]
-        private readonly DiContainer _container;
+        [AKInject]
+        private readonly IAKContainer _container;
 
-        [Inject]
+        [AKInject]
         private readonly AKPoolsDatabase _akPoolsDatabase;
 
         public Action<GameObject, bool> OnPoolSpawn { get; set; } = delegate {  };
@@ -24,7 +24,7 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
         private readonly Dictionary<GameObject, AKPrefab> _instanceToSFPrefab = new();
         private readonly Dictionary<GameObject, Component> _instanceToComponent = new();
         
-        [Inject]
+        [AKInject]
         protected async void Init()
         {
             foreach (var prefabsGroupContainer in _akPoolsDatabase.PrefabsGroupContainers)

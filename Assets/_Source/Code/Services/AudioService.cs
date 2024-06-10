@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using _Client_.Scripts.Objects;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code.Databases;
 using _Source.Code.Interfaces;
 using _Source.Code.Objects;
 using DG.Tweening;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
     public class AudioService : IAudioService
     {
-        [Inject]
+        [AKInject]
         private SettingsService _settingsService;
-        [Inject]
+        [AKInject]
         private AudioDatabase _audioDatabase;
 
         private readonly List<AudioSource> _freeAudioSources = new();
@@ -30,7 +30,7 @@ namespace _Source.Code.Services
         private int _currentMusicIndex;
         private Tween _playNextMusicTween;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             _audioSourcesRoot = new GameObject("[AUDIO_SOURCES_ROOT]").transform;

@@ -1,13 +1,13 @@
 using _Client_.Scripts.Interfaces;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code.Interfaces;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class PlayerDataService
+    public class PlayerDataService : IAKService
     {
-        [Inject]
+        [AKInject]
         private ISaveService _saveService;
         
         private Vector3 _playerPos = Vector3.zero;

@@ -2,8 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKScenes.Runtime
 {
@@ -20,7 +20,7 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
         private readonly Dictionary<Scene, AKScene> _sceneToSFScene = new Dictionary<Scene, AKScene>();
         private readonly Dictionary<AKScenesGroup, AKScene[]> _scenesMap = new Dictionary<AKScenesGroup, AKScene[]>();
 
-        [Inject]
+        [AKInject]
         private void Init(AKScenesDatabase database)
         {
             foreach (var groupContainer in database.Groups)

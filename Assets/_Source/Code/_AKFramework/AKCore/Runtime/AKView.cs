@@ -1,13 +1,13 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._Core.Installers;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code._Core.View
 {
-    public abstract class AKView : MonoBehaviour
+    public abstract class AKView : MonoBehaviour, IAKInjectable
     {
-        [Inject] private DiContainer _container;
+        [AKInject] private IAKContainer _container;
         
         protected virtual void Awake()
         {
@@ -17,14 +17,14 @@ namespace _Source.Code._Core.View
         protected virtual void Start()
         {
             if (_container == null)
-                AKContextRoot.RootContainer.Inject(this);
+                AKContextRoot.Container.Inject(this);
         }
 
         protected virtual void PreInit()
         {
         }
 
-        [Inject]
+        [AKInject]
         private async void _inject()
         {
             Init();

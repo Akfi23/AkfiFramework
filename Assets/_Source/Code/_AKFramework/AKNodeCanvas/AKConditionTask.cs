@@ -1,31 +1,31 @@
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._Core.Installers;
 using NodeCanvas.Framework;
-using Zenject;
 
 namespace _Source.Code._AKFramework.AKNodeCanvas
 {
-    public abstract class AKConditionTask<T> : ConditionTask<T> where T : class
+    public abstract class AKConditionTask<T> : ConditionTask<T>,IAKInjectable where T : class
     {
         protected override string OnInit()
         {
-            AKContextRoot.RootContainer.Inject(this);
+            AKContextRoot.Container.Inject(this);
             return base.OnInit();
         }
         
-        [Inject]
-        protected abstract void Init(DiContainer container);
+        [AKInject]
+        protected abstract void Init(IAKContainer container);
     }
     
-    public abstract class AKConditionTask : ConditionTask
+    public abstract class AKConditionTask : ConditionTask , IAKInjectable
     {
         protected override string OnInit()
         {
-            AKContextRoot.RootContainer.Inject(this);
+            AKContextRoot.Container.Inject(this);
             return base.OnInit();
         }
 
 
-        [Inject]
-        protected abstract void Init(DiContainer container);
+        [AKInject]
+        protected abstract void Init(IAKContainer container);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using _Client_.Scripts.Interfaces;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKEvents.Runtime;
 using _Source.Code._AKFramework.AKTags.Runtime;
 using _Source.Code._AKFramework.AKUI.Runtime.Interfaces;
@@ -8,22 +9,21 @@ using _Source.Code.Interfaces;
 using _Source.Code.Objects.Tutorial;
 using Leopotam.EcsLite;
 using UnityEngine;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class TutorialService
+    public class TutorialService : IAKService
     {
-        [Inject]
+        [AKInject]
         private ISaveService _saveService;
-        [Inject] 
+        [AKInject] 
         private IAKEventsService _eventsService;
-        [Inject]
+        [AKInject]
         private IAKUIService _uiController;
         // [Inject] 
         // private ISFAnalyticsService _analyticsService;
 
-        [Inject]
+        [AKInject]
         private TutorialDatabase _tutorialDatabase;
         
         private int _currentTutorialStepIndexIndex = 0;
@@ -41,7 +41,7 @@ namespace _Source.Code.Services
 
         public event Action<AKTag> StepChanged;
 
-        [Inject]
+        [AKInject]
         private void Init()
         {
             LoadData();
@@ -54,7 +54,7 @@ namespace _Source.Code.Services
             _tutorialDatabase.Reset();
         }
         
-        public void CheckCurrentTutorialStepStarted(ref EcsWorld world, ref DiContainer container)
+        public void CheckCurrentTutorialStepStarted(ref EcsWorld world, ref IAKContainer container)
         {
             if (CurrentTutorialStepIndex < 0) return;
             if (CurrentTutorialStepStarted) return;
@@ -77,7 +77,7 @@ namespace _Source.Code.Services
             StepChanged?.Invoke(GetCurrentTutorialStepData().StepTag);
         }
         
-        public void CheckCurrentTutorialStepCompleted(ref EcsWorld world, ref DiContainer container)
+        public void CheckCurrentTutorialStepCompleted(ref EcsWorld world, ref IAKContainer container)
         {
             if (CurrentTutorialStepIndex < 0) return;
             if (!CurrentTutorialStepStarted) return;
@@ -111,7 +111,7 @@ namespace _Source.Code.Services
             CurrentTutorialStepStarted = false; 
         }
         
-        public void CheckCurrentTutorialStepRevert(ref EcsWorld world, ref DiContainer container)
+        public void CheckCurrentTutorialStepRevert(ref EcsWorld world, ref IAKContainer container)
         {
             if (CurrentTutorialStepIndex < 0) return;
             if (!CurrentTutorialStepStarted) return;

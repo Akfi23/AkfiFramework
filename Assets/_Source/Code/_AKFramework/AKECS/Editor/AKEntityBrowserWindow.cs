@@ -35,8 +35,8 @@ namespace _Source.Code._AKFramework.AKECS.Editor
 
         public AKEntitiesBrowserWindow()
         {
-            if(AKContextRoot.RootContainer == null) return;
-            _worldsService = AKContextRoot.RootContainer.Resolve<IAKWorldService>();
+            if(AKContextRoot.Container == null) return;
+            _worldsService = AKContextRoot.Container.Resolve<IAKWorldService>();
             _world = _worldsService.Default;
             _entities = new HashSet<int>();
             _world.AddEventListener (this);
@@ -158,8 +158,8 @@ namespace _Source.Code._AKFramework.AKECS.Editor
         {
             if (state == PlayModeStateChange.EnteredPlayMode)
             {
-                await Task.FromResult(AKContextRoot.RootContainer != null);
-                _worldsService = AKContextRoot.RootContainer.Resolve<IAKWorldService>();
+                await Task.FromResult(AKContextRoot.Container != null);
+                _worldsService = AKContextRoot.Container.Resolve<IAKWorldService>();
                 _world = _worldsService.Default;
                 _entities = new HashSet<int>();
                 _world.AddEventListener(this);

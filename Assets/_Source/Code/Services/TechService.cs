@@ -1,13 +1,13 @@
 using System;
 using _Client_.Scripts.Interfaces;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code.Interfaces;
-using Zenject;
 
 namespace _Source.Code.Services
 {
-    public class TechService
+    public class TechService : IAKService
     {
-        [Inject] 
+        [AKInject] 
         private ISaveService _saveService;
 
         public bool IsFirstLaunch { get; private set; }
@@ -31,7 +31,7 @@ namespace _Source.Code.Services
         private long _firstLaunchTime;
 
         
-        [Inject]
+        [AKInject]
         private void Init()
         {
             IsFirstLaunch = _saveService.Load("FirstLaunch", true);
