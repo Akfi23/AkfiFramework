@@ -1,14 +1,11 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 using UnityToolbarExtender;
 
-//using UnityToolbarExtender;
-
 namespace Editor
 {
-
     [InitializeOnLoad]
-    public class EditorLoadSceneButton
+    public class EditorClearPrefsButton
     {
         static class ToolbarStyles
         {
@@ -27,7 +24,7 @@ namespace Editor
             }
         }
 
-        static EditorLoadSceneButton()
+        static EditorClearPrefsButton()
         {
             ToolbarExtender.LeftToolbarGUI.Add(LeftToolbarGUI);
         }
@@ -38,11 +35,11 @@ namespace Editor
 
             GUI.enabled = !EditorApplication.isPlaying;
 
-            GUI.backgroundColor = Color.cyan;
+            GUI.backgroundColor = Color.magenta;
 
-            if (GUILayout.Button(new GUIContent("SCENE", "Select scene"), ToolbarStyles.CommandButtonStyle, GUILayout.Width(100f)))
+            if (GUILayout.Button(new GUIContent("Clear prefs", "Clear Prefs"), ToolbarStyles.CommandButtonStyle, GUILayout.Width(500f)))
             {
-                SelectSceneEditorWindow.OpenWindow();
+                PlayerPrefs.DeleteAll();
             }
 
             GUI.backgroundColor = Color.white;
