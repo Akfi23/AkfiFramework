@@ -34,10 +34,17 @@ namespace Editor
             GUILayout.FlexibleSpace();
 
             GUI.enabled = !EditorApplication.isPlaying;
+            
+            if (PlayerPrefs.HasKey("HasSaves"))
+            {
+                GUI.backgroundColor = Color.magenta;
+            }
+            else
+            {
+                GUI.backgroundColor = Color.gray;
+            }
 
-            GUI.backgroundColor = Color.magenta;
-
-            if (GUILayout.Button(new GUIContent("Clear prefs", "Clear Prefs"), ToolbarStyles.CommandButtonStyle, GUILayout.Width(500f)))
+            if (GUILayout.Button(new GUIContent("Clear PREFS", "Clear Prefs"), ToolbarStyles.CommandButtonStyle, GUILayout.Width(500f)))
             {
                 PlayerPrefs.DeleteAll();
             }

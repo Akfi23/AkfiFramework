@@ -16,7 +16,6 @@ using UnityEngine;
 
 namespace _Source.Code._AKFramework.Installers
 {
-    // [RequireComponent(typeof(SceneContext))]
     public sealed class ContextRoot : AKContextRoot
     {
         [SerializeField]
@@ -36,7 +35,6 @@ namespace _Source.Code._AKFramework.Installers
 
         protected override void Setup(IAKContainer container)
         {
-            // Bind Data
             foreach (var database in databases)
             {
                 container.Bind(database);
@@ -91,66 +89,7 @@ namespace _Source.Code._AKFramework.Installers
             
             AKDebug.Log("<color=yellow>ECS Inited</color>");
         }
-
-        // public override void InstallBindings()
-        // {
-        //     foreach (var database in databases)
-        //     {
-        //         Container.Bind(database.GetType()).FromInstance(database);
-        //     }
-        //     
-        //     Container.Bind<IAKWorldService>().To<AKWorldService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IAKScenesService>().To<AKScenesService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IAKUIService>().To<AKUIService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IAKTagsService>().To<AKTagsService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IAKEventsService>().To<AKEventsService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IAKPoolsService>().To<AKPoolsService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<EcsPoolService>().To<EcsPoolService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IInputService>().To<InputService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IItemService<int>>().To<ItemService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<UpgradesService>().To<UpgradesService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<ISaveService>().To<SaveService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<BuildingsService>().To<BuildingsService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<MaterialService>().To<MaterialService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<IVibrationService>().To<VibrationService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<PlayerDataService>().To<PlayerDataService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<SettingsService>().To<SettingsService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<TaskService>().To<TaskService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<VFXService>().To<VFXService>().FromNew().AsSingle().NonLazy();
-        //     Container.Bind<TechService>().To<TechService>().FromNew().AsSingle().NonLazy();
-        //
-        //     AKDebug.Log("<color=yellow>Bindings Installed</color>");
-        // }
-
-//         protected override void Init(DiContainer container)
-//         {
-//             var worldsService = container.Resolve<IAKWorldService>();
-//
-//             _fixedUpdateSystems = new EcsSystems(worldsService.Default, container);
-//             _updateSystems = new EcsSystems(worldsService.Default, container);
-//             _lateUpdateSystems = new EcsSystems(worldsService.Default, container);
-//
-//             if (AKDebug.IsDebug)
-//             {
-// #if UNITY_EDITOR
-//                 _fixedUpdateSystems.Add(new Leopotam.EcsLite.UnityEditor.EcsWorldDebugSystem());
-// #endif
-//             }
-//             
-//             _fixedUpdateSystems
-//                 .Init();
-//         
-//             _updateSystems
-//                 .Add(new RotatePlayerSystem())
-//                 
-//                 .Init();
-//         
-//             _lateUpdateSystems
-//                 .Init();
-//             
-//             AKDebug.Log("<color=yellow>ECS Inited</color>");
-//         }
-    
+        
         private void FixedUpdate()
         {
             _fixedUpdateSystems?.Run();

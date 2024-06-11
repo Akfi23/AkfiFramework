@@ -18,6 +18,18 @@ namespace _Source.Code.Services
         [AKInject]
         private void Init()
         {
+            
+#if UNITY_EDITOR
+
+            if (AKDebug.IsDebug)
+            {
+                if (!PlayerPrefs.HasKey("HasSaves"))
+                {
+                    PlayerPrefs.SetInt("HasSaves",1);
+                }
+            }
+#endif
+            
             _settings = new JsonSerializerSettings {
                 Converters = new JsonConverter[] 
                 {
