@@ -126,6 +126,11 @@ namespace _Source.Code._AKFramework.AKEcsLitePhysics3D.Runtime
             {
                 triggerEvent.entitiesDictionary[key] = false;
             }
+
+            // foreach (var key in triggerEvent.entitiesDictionary.Keys)
+            // {
+            //     triggerEvent.entitiesDictionary[key] = false;
+            // }
         }
         
         private void CheckEvents(ref AKTriggerCastEvent triggerEvent, int entity)

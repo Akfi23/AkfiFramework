@@ -15,7 +15,7 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
             _ecsWorlds[Guid.Empty] = Default;
             _ecsWorldsStates[Guid.Empty] = true;
         
-            AKDebug.Log("<color=green>ECS WORLD</color> Created");
+            AKDebug.Log("<color=green>ECS WORLD</color> <color=white>Created</color>");
         }
 
         public EcsWorld Default { get; private set; }
@@ -32,7 +32,7 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
             _ecsWorlds[guid] = ecsWorld;
             _ecsWorldsStates[guid] = started;
         
-            AKDebug.Log("<color=green>ECS WORLD</color> Created");
+            AKDebug.Log("<color=green>ECS WORLD</color> <color=white>Created</color>");
 
             return ecsWorld;
         }
@@ -54,11 +54,6 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
             Default = new EcsWorld();
         
             AKDebug.Log("<color=red>ECS WORLD</color> Reseted");
-        }
-
-        public void DebugStrings()
-        {
-            throw new NotImplementedException();
         }
     }
 }

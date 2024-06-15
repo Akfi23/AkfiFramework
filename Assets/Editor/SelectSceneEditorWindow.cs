@@ -132,8 +132,6 @@ namespace Editor
  
                 GUILayout.Space(2f);
 
-           
-
                 GUILayout.BeginHorizontal("Box");
 
                 if (GUILayout.Button("Reload Scene List"))

@@ -59,6 +59,8 @@ namespace _Source.Code._AKFramework.Installers
             Container.Bind<TaskService>(new TaskService());
             Container.Bind<VFXService>(new VFXService());
             Container.Bind<TechService>(new TechService());
+            
+            AKDebug.Log("<color=yellow>Injection Container</color> <color=white>Inited</color>");
         }
 
         protected override void Init(IAKContainer container)
@@ -87,7 +89,7 @@ namespace _Source.Code._AKFramework.Installers
             _lateUpdateSystems
                 .Init();
             
-            AKDebug.Log("<color=yellow>ECS Inited</color>");
+            AKDebug.Log("<color=green>ECS</color> <color=white>Inited</color>");
         }
         
         private void FixedUpdate()
