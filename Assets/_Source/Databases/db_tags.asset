@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groups:
   - _name: Player
-    _id: a44ac3eb-9729-4a28-8026-1230a1a72ca6
+    _id: 1714388549
     _tags:
     - _name: Player
-      _id: c41e881c-4226-458b-9a52-13464595bb85
+      _id: 49025948
   - _name: Items
-    _id: 0e410534-c7b9-420d-9b09-3c28df5a91da
+    _id: 1814785612
     _tags:
     - _name: Money
-      _id: ee9a951c-7979-4904-9f92-af49e5fc84ac
+      _id: 939709410

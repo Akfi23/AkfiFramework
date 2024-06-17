@@ -22,6 +22,7 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
         {
             var assetPaths = AssetDatabase.GetAllAssetPaths();
             var count = 0;
+            
             foreach (var path in assetPaths)
             {
                 count++;

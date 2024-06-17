@@ -29,7 +29,7 @@ public abstract class AKDatabase : ScriptableObject
             
     }
     
-    [Button]
+    [Button][GUIColor(1, 0.6f, 0.4f)]
     public virtual void ResetData()
     {
             
