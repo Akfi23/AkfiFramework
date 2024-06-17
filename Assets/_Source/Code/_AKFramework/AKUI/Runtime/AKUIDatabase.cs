@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using _Source.Code._AKFramework.AKCore.Runtime;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -14,10 +15,41 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
         private AKScreenGroupContainer[] screenGroupsContainers;
 
         public override string Title => "UI";
+        
+#if UNITY_EDITOR
+
+        public override void UpdateAKType()
+        {
+            foreach (var group in screenGroupsContainers)
+            {
+                foreach (var screen in group.ScreenContainers)
+                {
+                    AKTypeUtilsUpdater.AddID($"{group._Name}/{screen._Name}", screen._Id);
+                    foreach (var button in screen.ButtonContainers)
+                    {
+                        AKTypeUtilsUpdater.AddID($"{group._Name}/{screen._Name}/{button._Name}", button._Id);
+                    }
+                    foreach (var toggle in screen.ToggleContainers)
+                    {
+                        AKTypeUtilsUpdater.AddID($"{group._Name}/{screen._Name}/{toggle._Name}", toggle._Id);
+                    }
+                }
+
+                AKTypeUtilsUpdater.AddID($"{group._Name}", group._Id);
+            }
+        }
+
+        [Button]
+        private void UpdateAKScreen()
+        {
+            UpdateAKType();
+            AKTypeUtilsUpdater.UpdateID();
+        }
+#endif
 
         protected override void Generate(out AKGenerationData[] generationData)
         {
-            var screens = new Dictionary<string, string>();
+            var screens = new Dictionary<int, string>();
 
             foreach (var layer0 in screenGroupsContainers)
             {
@@ -27,7 +59,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
                 }
             }
 
-            var buttons = new Dictionary<string, string>();
+            var buttons = new Dictionary<int, string>();
 
             foreach (var layer0 in screenGroupsContainers)
             {
@@ -40,7 +72,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
                 }
             }
             
-            var toggles = new Dictionary<string, string>();
+            var toggles = new Dictionary<int, string>();
 
             foreach (var layer0 in screenGroupsContainers)
             {

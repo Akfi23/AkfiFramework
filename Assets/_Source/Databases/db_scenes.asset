@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groups:
   - _name: Levels
-    _id: d8494b26-abb5-4fe8-a8a0-1e878b812d1a
+    _id: 987186858
     _scenes:
     - _name: Level 1
-      _id: 39f76076-b8ba-4028-bf8c-edb1c2023d73
+      _id: 39
       _scene:
         _sceneAsset: {fileID: 102900000, guid: 6344901a4dd1a45d9a8d40514b84c0a6, type: 3}
         _sceneName: level_1

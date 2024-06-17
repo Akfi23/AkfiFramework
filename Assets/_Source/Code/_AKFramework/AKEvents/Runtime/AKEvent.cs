@@ -6,7 +6,7 @@ namespace _Source.Code._AKFramework.AKEvents.Runtime
     [Serializable]
     public class AKEvent : AKType
     {
-        public AKEvent(string id, string name) : base(id, name)
+        public AKEvent(int id, string name) : base(id, name)
         {
         }
         

@@ -4,7 +4,7 @@ namespace _Source.Code._AKFramework.AKTags.Runtime
     {
         public static bool HasTag(this AKTag tag, AKTag[] otherTags)
         {
-            if (tag == null) return true;
+            if (tag == null) return false;
             if (otherTags == null || otherTags.Length <= 0) return false;
 
             for (int j = 0; j < otherTags.Length; j++)
@@ -17,14 +17,14 @@ namespace _Source.Code._AKFramework.AKTags.Runtime
 
         public static bool HasTag(this AKTag tag, AKTag otherTag)
         {
-            if (tag == null) return true;
+            if (tag == null) return false;
 
-            return tag == otherTag;
+            return tag._Id == otherTag._Id;
         }
 
         public static bool HasTag(this AKTag[] tags, AKTag[] otherTags)
         {
-            if (tags == null || tags.Length <= 0) return true;
+            if (tags == null || tags.Length <= 0) return false;
             if (otherTags == null || otherTags.Length <= 0) return false;
 
             for (int i = 0; i < tags.Length; i++)
@@ -40,7 +40,7 @@ namespace _Source.Code._AKFramework.AKTags.Runtime
 
         public static bool HasTag(this AKTag[] tags, AKTag otherTag)
         {
-            if (tags == null || tags.Length <= 0) return true;
+            if (tags == null || tags.Length <= 0) return false;
 
             foreach (var t in tags)
             {

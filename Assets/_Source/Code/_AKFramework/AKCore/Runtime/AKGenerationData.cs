@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public struct AKGenerationData 
 {
     public AKGenerationData(string fileName, string[] usings, Type akType,
-        Dictionary<string, string> properties)
+        Dictionary<int, string> properties)
     {
         FileName = fileName;
         Usings = usings;
@@ -15,5 +15,5 @@ public struct AKGenerationData
     public string FileName;
     public string[] Usings;
     public Type AKType;
-    public Dictionary<string, string> Properties;
+    public Dictionary<int, string> Properties;
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: fsm_core
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"_scene":{"_value":{"name":"Levels/Level
-    1","id":"39f76076-b8ba-4028-bf8c-edb1c2023d73"}},"$type":"_Source.Code._AKFramework.AKScenes.Runtime.NodeCanvas.LoadSceneActionTask"},{"_screen":{"_value":{"name":"Game/Test
-    Screen","id":"e76eb6e3-c7d5-491c-a5dd-58a44f66851e"}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.ShowScreenActionTask"}]},"_name":"Loading","_position":{"x":471.727,"y":452.7312},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+    1","id":39}},"$type":"_Source.Code._AKFramework.AKScenes.Runtime.NodeCanvas.LoadSceneActionTask"},{"_screen":{"_value":{"name":"Game/Game
+    Screen","id":89}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.ShowScreenActionTask"}]},"_name":"Loading","_position":{"x":471.727,"y":451.7312},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences: []
   _graphSource:
     _version: 3.26

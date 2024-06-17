@@ -15,7 +15,7 @@ namespace _Source.Code._AKFramework.AKCore.Editor
         private D _database;
         private int _index;
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             if (_database == null)
             {
@@ -25,7 +25,7 @@ namespace _Source.Code._AKFramework.AKCore.Editor
 
                 if (assetsGuids == null || assetsGuids.Length == 0)
                 {
-                    Debug.LogWarning($"Missing database: {typeName}");
+                    AKDebug.LogWarning($"Missing database: {typeName}");
                     return;
                 }
 
@@ -44,34 +44,32 @@ namespace _Source.Code._AKFramework.AKCore.Editor
 
 
         protected void DrawAKTypeProperty(ref Rect position, SerializedProperty property, GUIContent label,
-            Dictionary<string, string> guidNamePairs)
+            Dictionary<int, string> guidNamePairs)
         {
             _guidProperty = property.FindPropertyRelative("id");
             _pathProperty = property.FindPropertyRelative("name");
 
-            if (string.IsNullOrEmpty(_guidProperty.stringValue))
+            if (_guidProperty.intValue == 0)
             {
-                _guidProperty.stringValue = AKConstants.EmptyGUIDString;
+                _guidProperty.intValue = 0;
                 _pathProperty.stringValue = AKConstants.NONE;
             }
 
-            var guid = Guid.Parse(_guidProperty.stringValue);
+            var guid = _guidProperty.intValue;
 
 
-            if (!guidNamePairs.ContainsKey(_guidProperty.stringValue))
+            if (!guidNamePairs.ContainsKey(_guidProperty.intValue))
             {
-                _guidProperty.stringValue = AKConstants.EmptyGUIDString;
+                _guidProperty.intValue = 0;
                 _pathProperty.stringValue = AKConstants.NONE;
             }
 
             var names = guidNamePairs.Values.ToList();
             names.Insert(0, AKConstants.NONE);
 
-            var name = guidNamePairs.ContainsKey(_guidProperty.stringValue)
-                ? guidNamePairs[_guidProperty.stringValue]
-                : AKConstants.NONE;
+            var name = guidNamePairs.GetValueOrDefault(_guidProperty.intValue, AKConstants.NONE);
 
-            var isNoneDropdown = guid == Guid.Empty;
+            var isNoneDropdown = guid == 0;
 
             _index = names.IndexOf(name);
 
@@ -90,16 +88,16 @@ namespace _Source.Code._AKFramework.AKCore.Editor
             {
                 if (_index == 0)
                 {
-                    _guidProperty.stringValue = AKConstants.EmptyGUIDString;
+                    _guidProperty.intValue = 0;
                     _pathProperty.stringValue = AKConstants.NONE;
                 }
                 else
                 {
                     var guidStr = guidNamePairs.Keys.ToArray()[_index - 1];
                     _pathProperty.stringValue = guidNamePairs[guidStr];
-                    _guidProperty.stringValue = guidNamePairs.Keys.ToArray()[_index - 1];
+                    _guidProperty.intValue = guidNamePairs.Keys.ToArray()[_index - 1];
                 }
             }
-        }  
+        }
     }
 }

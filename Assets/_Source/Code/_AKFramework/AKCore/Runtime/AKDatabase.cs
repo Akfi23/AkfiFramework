@@ -24,6 +24,11 @@ public abstract class AKDatabase : ScriptableObject
         
 #if UNITY_EDITOR
 
+    public virtual void UpdateAKType()
+    {
+            
+    }
+    
     [Button]
     public virtual void ResetData()
     {

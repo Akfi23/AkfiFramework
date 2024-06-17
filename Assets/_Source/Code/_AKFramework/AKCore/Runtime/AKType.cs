@@ -6,17 +6,17 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
     [Serializable]
     public abstract class AKType
     {
-        public string _Id => id;
+        public int _Id => id;
 
         public string _Name => name;
         
         [SerializeField, HideInInspector]
         private string name;
-    
+
         [SerializeField, HideInInspector]
-        private string id;
+        private int id;
     
-        protected AKType(string _id, string _name = AKConstants.NONE)
+        protected AKType(int _id, string _name = AKConstants.NONE)
         {
             id = _id;
             name = _name;
@@ -31,13 +31,13 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
 
         protected AKType()
         {
-            id = Guid.NewGuid().ToString();
+            id = AKIDGenerator.Generate();
             name = AKConstants.NONE;
         }
 
         protected bool Equals(AKType other)
         {
-            return Equals(id, other.id);
+            return id == other.id;
         }
 
         public override bool Equals(object obj)
@@ -46,14 +46,12 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
 
             if (ReferenceEquals(this, obj)) return true;
 
-            if (obj.GetType() != GetType()) return false;
-            return Equals((AKType)obj);
+            return obj.GetType() == GetType() && Equals((AKType)obj);
         }
 
         public override int GetHashCode()
         {
-            if (string.IsNullOrWhiteSpace(id)) return 0;
-            return id.GetHashCode();
+            return id == 0 ? 0 : id.GetHashCode();
         }
 
         public override string ToString()
@@ -73,7 +71,7 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
                 return false;
             }
 
-            return a.id.Equals(b.id);
+            return a.id == b.id;
         }
 
         public static bool operator !=(AKType a, AKType b)
@@ -81,11 +79,11 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
             return !(a == b);
         }
 
-        public bool IsNone => string.IsNullOrWhiteSpace(id);
+        public bool IsNone => id == 0;
 
         public virtual void Reset()
         {
-            id = string.Empty;
+            id = 0;
         }
     }
 }

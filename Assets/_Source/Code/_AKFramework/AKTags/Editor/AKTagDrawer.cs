@@ -11,7 +11,7 @@ namespace _Source.Code._AKFramework.AKTags.Editor
     {
         protected override void InitializeAKTypeDrawer(ref Rect position, AKTagsDatabase database, SerializedProperty property, GUIContent label)
         {
-            var resultLayers = new Dictionary<string, string>();
+            var resultLayers = new Dictionary<int, string>();
 
             foreach (var layer0 in database.Groups)
             {

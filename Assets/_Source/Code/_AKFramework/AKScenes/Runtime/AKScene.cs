@@ -6,7 +6,7 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
     [Serializable]
     public class AKScene : AKType
     {
-        public AKScene(string id, string name) : base(id, name)
+        public AKScene(int id, string name) : base(id, name)
         {
         }
         

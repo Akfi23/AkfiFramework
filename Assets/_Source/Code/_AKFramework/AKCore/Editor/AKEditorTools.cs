@@ -10,7 +10,7 @@ namespace _Source.Code._AKFramework.AKCore.Editor
         [Button]
         private static void GenerateScripts()
         {
-            EditorUtility.DisplayProgressBar("Scripts Generation", "Wait...", 0);
+            EditorUtility.DisplayProgressBar("Scripts Generation", "Wait few seconds friend...", 0);
 
             var guids = AssetDatabase.FindAssets($"t:{nameof(AKDatabase)}");
 

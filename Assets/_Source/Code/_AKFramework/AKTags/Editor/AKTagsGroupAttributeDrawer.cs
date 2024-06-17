@@ -14,7 +14,7 @@ namespace _Source.Code._AKFramework.AKTags.Editor
         {
             var groupAttribute = (attribute as AKTagsGroupAttribute)?.groups;
 
-            var resultLayers = new Dictionary<string, string>();
+            var resultLayers = new Dictionary<int, string>();
 
             var group = database.Groups.Where(x => groupAttribute != null && groupAttribute.Contains(x._Name)).ToArray();
 
@@ -38,8 +38,6 @@ namespace _Source.Code._AKFramework.AKTags.Editor
                     }
                 }
             }
-
-
 
             DrawAKTypeProperty(ref position, property, label, resultLayers);
         }

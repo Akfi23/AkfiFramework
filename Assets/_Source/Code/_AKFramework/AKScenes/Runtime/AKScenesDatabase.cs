@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using _Source.Code._AKFramework.AKCore.Runtime;
+using Sirenix.OdinInspector;
 
 namespace _Source.Code._AKFramework.AKScenes.Runtime
 {
@@ -14,11 +16,34 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
         private AKScenesGroupContainer[] _groups;
 
         public override string Title => "Scenes";
+        
+#if UNITY_EDITOR
+
+        public override void UpdateAKType()
+        {
+            foreach (var group in Groups)
+            {
+                foreach (var scene in group.Scenes)
+                {
+                    AKTypeUtilsUpdater.AddID($"{group._Name}/{scene._Name}", scene._Id);
+                }
+                
+                AKTypeUtilsUpdater.AddID($"{group._Name}", group._Id);
+            }
+        }
+
+        [Button]
+        private void UpdateAKScene()
+        {
+            UpdateAKType();
+            AKTypeUtilsUpdater.UpdateID();
+        }
+#endif
 
         protected override void Generate(out AKGenerationData[] generationData)
         {
-            var groups = new Dictionary<string, string>();
-            var scenes = new Dictionary<string, string>();
+            var groups = new Dictionary<int, string>();
+            var scenes = new Dictionary<int, string>();
 
             foreach (var layer0 in _groups)
             {

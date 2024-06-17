@@ -7,13 +7,13 @@ using UnityEngine;
 namespace _Source.Code._AKFramework.AKEvents.Editor
 {
     [CustomPropertyDrawer(typeof(AKEvent))]
-    public class AKEventDrawer : AKTypeDrawer<AKEvent,AKEventsDatabase>
+    public class AKEventDrawer : AKTypeDrawer<AKEvent, AKEventsDatabase>
     {
         protected override void InitializeAKTypeDrawer(ref Rect position, AKEventsDatabase database,
             SerializedProperty property,
             GUIContent label)
         {
-            var resultLayers = new Dictionary<string, string>();
+            var resultLayers = new Dictionary<int, string>();
 
             foreach (var layer0 in database.EventsGroupContainers)
             {
@@ -23,7 +23,9 @@ namespace _Source.Code._AKFramework.AKEvents.Editor
                 }
             }
 
+
             DrawAKTypeProperty(ref position, property, label, resultLayers);
         }
+
     }
 }

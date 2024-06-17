@@ -6,7 +6,7 @@ namespace _Source.Code._AKFramework.AKUI.Runtime
     [Serializable]
     public sealed class AKScreen : AKType
     {
-        public AKScreen(string id, string name) : base(id, name)
+        public AKScreen(int id, string name) : base(id, name)
         {
         }
         

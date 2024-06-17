@@ -154,7 +154,7 @@ namespace _Source.Code.Data
 
         private ItemData FindItemData(string tagString, string countString)
         {
-            if (tagString == null || countString == null) return new ItemData(AKTags.Player__Player, 1);
+            //if (tagString == null || countString == null) return new ItemData(AKTags.Player__Player, 1);
             
             return new ItemData(FindTag(tagString), int.Parse(countString));
         }

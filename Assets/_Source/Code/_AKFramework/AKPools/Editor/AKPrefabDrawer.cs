@@ -13,7 +13,7 @@ namespace _Source.Code._AKFramework.AKPools.Editor
             SerializedProperty property,
             GUIContent label)
         {
-            var resultLayers = new Dictionary<string, string>();
+            var resultLayers = new Dictionary<int, string>();
 
             foreach (var layer0 in database.PrefabsGroupContainers)
             {

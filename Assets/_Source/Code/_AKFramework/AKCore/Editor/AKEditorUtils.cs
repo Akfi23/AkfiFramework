@@ -12,7 +12,7 @@ namespace _Source.Code._AKFramework.AKCore.Editor
             bool refreshAssets = false)
         {
             var instance = (AKDatabase) ScriptableObject.CreateInstance(type);
-
+            
             var path = EditorUtility.SaveFilePanel(
                 "Create new database",
                 "Assets",

@@ -9,7 +9,7 @@ namespace _Source.Code.Objects.Parameters
     [Serializable]
     public class RangeParameterAction : IParameterAction
     {
-        public AKTag ParameterTag => AKTags.Player__Player;
+        public AKTag ParameterTag => null;
         [SerializeField] 
         private float[] rangeValue;
 

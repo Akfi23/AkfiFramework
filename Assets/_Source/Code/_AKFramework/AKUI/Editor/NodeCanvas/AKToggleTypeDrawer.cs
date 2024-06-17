@@ -28,7 +28,7 @@ namespace _Source.Code._AKFramework.AKUI.Editor.NodeCanvas
 
                 if (assetsGuids == null || assetsGuids.Length == 0)
                 {
-                    Debug.LogWarning($"Missing Database: {typeName}");
+                    AKDebug.LogWarning($"Missing Database: {typeName}");
                     return instance;
                 }
 
@@ -38,7 +38,7 @@ namespace _Source.Code._AKFramework.AKUI.Editor.NodeCanvas
 
             if (_database == null) return instance;
 
-            var guidNamePairs = new Dictionary<string, string>();
+            var guidNamePairs = new Dictionary<int, string>();
 
             foreach (var layer0 in _database.ScreenGroupsContainers)
             {
@@ -53,20 +53,18 @@ namespace _Source.Code._AKFramework.AKUI.Editor.NodeCanvas
 
             var guid = instance._Id;
 
-            if (!guidNamePairs.ContainsKey(instance._Id.ToString()))
+            if (!guidNamePairs.ContainsKey(instance._Id))
             {
                 instance = new AKToggle();
             }
 
             var names = guidNamePairs.Values.ToList();
-            names.Insert(0, AKConstants.NONE);
+            names.Insert(0,AKConstants.NONE);
 
-            var name = guidNamePairs.ContainsKey(instance._Id)
-                ? guidNamePairs[instance._Id]
-                : AKConstants.NONE;
+            var name = guidNamePairs.GetValueOrDefault(instance._Id, AKConstants.NONE);
 
 
-            if (string.IsNullOrWhiteSpace(guid))
+            if (guid == 0)
             {
                 GUI.backgroundColor = Color.red;
             }
@@ -83,7 +81,7 @@ namespace _Source.Code._AKFramework.AKUI.Editor.NodeCanvas
             {
                 if (_index == 0)
                 {
-                    instance = new AKToggle(string.Empty, AKConstants.NONE);
+                    instance = new AKToggle(0, AKConstants.NONE);
                 }
                 else
                 {

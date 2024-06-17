@@ -14,7 +14,7 @@ namespace _Source.Code._AKFramework.AKTags.Runtime
             JsonSerializer serializer)
         {
             var tag = ((string)reader.Value).Split('_');
-            return new AKTag(tag[0], tag[1]);
+            return new AKTag(int.Parse(tag[0]), tag[1]);
         }
         
     }

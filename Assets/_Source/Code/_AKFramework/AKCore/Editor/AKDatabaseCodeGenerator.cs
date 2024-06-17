@@ -42,7 +42,7 @@ namespace _Source.Code._AKFramework.AKCore.Editor
                 if (string.IsNullOrWhiteSpace(propertyName)) continue;
                 
                 sbTrans.AppendLine(
-                    $"{indents(2)}public static readonly {generationData.AKType.Name} {propertyName} = new {generationData.AKType.Name} (\"{property.Key}\", \"{property.Value}\");");
+                    $"{indents(2)}public static readonly {generationData.AKType.Name} {propertyName} = new ({property.Key}, \"{property.Value}\");");
             }
 
             sbTrans.AppendLine($"{indents(1)}}}");
@@ -108,13 +108,13 @@ namespace _Source.Code._AKFramework.AKCore.Editor
                 return null;
             return removeNonASCIICharacters(text, allowCategory);
         }
-
+        
         private string removeNonASCIICharacters(string text, bool allowCategory = false)
         {
             if (string.IsNullOrEmpty(text))
                 return text;
 
-            // Remove Non-Letter/Digits and collapse all extra espaces into a single space
+            // Remove Non-Letter/Digits and collapse all extra spaces into a single space
             var current = 0;
             var output = new char[text.Length];
             var skipped = false;

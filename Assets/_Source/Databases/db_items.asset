@@ -23,12 +23,12 @@ MonoBehaviour:
       data:
         itemTag:
           name: Items/Money
-          id: ee9a951c-7979-4904-9f92-af49e5fc84ac
+          id: 939709410
         count: 0
         totalCollectedCount: 0
         prefab:
           name: None
-          id: 00000000-0000-0000-0000-000000000000
+          id: 0
         icon: {fileID: 0}
         isUnlock: 1
         hasCapacity: 0

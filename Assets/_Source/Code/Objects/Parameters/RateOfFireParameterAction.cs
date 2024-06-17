@@ -9,7 +9,7 @@ namespace _Source.Code.Objects.Parameters
     [Serializable]
     public class RateOfFireParameterAction : IParameterAction
     {
-        public AKTag ParameterTag => AKTags.Player__Player;
+        public AKTag ParameterTag => null;
 
         [SerializeField]
         private float[] rateOfFireValue;

@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Source.Code._AKFramework.AKCore.Runtime
@@ -7,26 +8,32 @@ namespace _Source.Code._AKFramework.AKCore.Runtime
     public class AKTypeContainer : ISerializationCallbackReceiver
     {
         public string _Name => _name;
-
-        public string _Id => _id;
+        public int _Id => _id;
 
         [SerializeField]
         private string _name = string.Empty;
-
-        [HideInInspector]
+        [ReadOnly]
         [SerializeField]
-        private string _id = string.Empty;
+        private int _id = 0;
 
         public void OnBeforeSerialize()
         {
-            if (string.IsNullOrWhiteSpace(_id))
+            if (_id != 0)
             {
-                _id = Guid.NewGuid().ToString();
+                if (!AKIDGenerator.Has(_id))
+                {
+                    AKIDGenerator.Add(_id);
+                }
+                return;
             }
+            
+            _id = AKIDGenerator.Generate();
+            AKIDGenerator.Add(_id);
         }
 
         public void OnAfterDeserialize()
         {
+            
         }
     }
 }

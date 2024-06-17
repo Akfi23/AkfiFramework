@@ -4,7 +4,7 @@ namespace AKFramework.Generated
 {
     public static class AKTags
     {
-        public static readonly AKTag Player__Player = new AKTag ("c41e881c-4226-458b-9a52-13464595bb85", "Player/Player");
-        public static readonly AKTag Items__Money = new AKTag ("ee9a951c-7979-4904-9f92-af49e5fc84ac", "Items/Money");
+        public static readonly AKTag Player__Player = new (49025948, "Player/Player");
+        public static readonly AKTag Items__Money = new (939709410, "Items/Money");
     }
 }
