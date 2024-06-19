@@ -14,6 +14,8 @@ namespace _Source.Code._AKFramework.AKUI.Runtime.Objects
         [SerializeField] 
         private float delay;
         [SerializeField]
+        private float startValue;
+        [SerializeField]
         private float endValue;
         [SerializeField]
         private Ease easeType;
@@ -32,8 +34,8 @@ namespace _Source.Code._AKFramework.AKUI.Runtime.Objects
             }
             
             _taskCompleted = new TaskCompletionSource<bool>();
-
-            rectTransform.DOScale(endValue, time).SetEase(easeType).SetDelay(delay).SetUpdate(useUnscaledTime)
+            
+            rectTransform.DOScale(endValue, time).SetEase(easeType).SetDelay(delay).SetUpdate(useUnscaledTime).From(startValue)
                 .OnComplete(() => _taskCompleted.TrySetResult(true));
             
             await _taskCompleted.Task;

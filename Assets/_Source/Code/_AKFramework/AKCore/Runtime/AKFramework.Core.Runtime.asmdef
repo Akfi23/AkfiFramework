@@ -2,7 +2,6 @@
     "name": "AKFramework.Core.Runtime",
     "rootNamespace": "AKFramework.Core.Runtime",
     "references": [
-        "",
         "UniTask"
     ],
     "includePlatforms": [],
