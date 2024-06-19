@@ -39,8 +39,8 @@ namespace _Source.Code.Services
                 _itemsMapping.Add(item.ItemTag, item);
             }
             
-            // AKDebug.Log(Get(AKTags.Items__Money));
-            // Add(AKTags.Items__Money,100);
+            AKDebug.Log(Get(AKTags.Items__Money));
+            Add(AKTags.Items__Money,100);
         }
         
         public void Add(AKTag tag, int value)
