@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"_scene":{"_value":{"name":"Levels/Level
     1","id":39}},"$type":"_Source.Code._AKFramework.AKScenes.Runtime.NodeCanvas.LoadSceneActionTask"},{"_screen":{"_value":{"name":"Game/Game
-    Screen","id":89}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.ShowScreenActionTask"}]},"_name":"Loading","_position":{"x":471.727,"y":451.7312},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+    Screen","id":89}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.ShowScreenActionTask"},{"_screen":{"_value":{"name":"Game/Test
+    Screen","id":380077626}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.CloseScreenActionTask"},{"Event":{"_value":{"name":"Game/Start","id":28576855}},"$type":"_Source.Code._AKFramework.AKEvents.Runtime.NodeCanvas.BroadcastAKEventActionTask"},{"waitTime":{"_value":3.0},"$type":"NodeCanvas.Tasks.Actions.Wait"},{"_screen":{"_value":{"name":"Game/Test
+    Screen","id":380077626}},"$type":"_Source.Code._AKFramework.AKUI.Runtime.NodeCanvas.ShowScreenActionTask"}]},"_name":"Loading","_position":{"x":471.727,"y":452.7312},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _objectReferences: []
   _graphSource:
     _version: 3.26

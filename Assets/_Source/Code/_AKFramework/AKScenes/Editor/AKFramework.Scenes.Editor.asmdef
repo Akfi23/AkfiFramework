@@ -1,0 +1,20 @@
+{
+    "name": "AKFramework.Scenes.Editor",
+    "rootNamespace": "AKFramework.Scenes.Editor",
+    "references": [
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d",
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:93b18303541899d48b05193ca68a14b5"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

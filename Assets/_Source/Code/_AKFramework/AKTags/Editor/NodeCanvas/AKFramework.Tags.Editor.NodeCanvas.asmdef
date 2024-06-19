@@ -1,0 +1,23 @@
+{
+    "name": "AKFramework.Tags.Editor.NodeCanvas",
+    "rootNamespace": "AKFramework.Tags.Editor.NodeCanvas",
+    "references": [
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d",
+        "GUID:66c2eb417c67ad849907d0769db96dbf",
+        "GUID:6d33db047dde6b64aa22244576b7798c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Editor"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "NODE_CANVAS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,21 @@
+{
+    "name": "AKFramework.ECS.Lite.Physics3D.Runtime",
+    "rootNamespace": "AKFramework.ECS.Lite.Physics3D.Runtime",
+    "references": [
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:f5ee14c16463f2a48ae00d42037a41ac",
+        "GUID:e59bf9fc7d5a44b18a819a92edd46163",
+        "GUID:d8403a70bf6dec345964998f12e3197f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ECS_EXIST"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,17 @@
+{
+    "name": "AKFramework.Core.Runtime",
+    "rootNamespace": "AKFramework.Core.Runtime",
+    "references": [
+        "",
+        "UniTask"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

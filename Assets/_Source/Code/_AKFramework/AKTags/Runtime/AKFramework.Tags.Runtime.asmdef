@@ -1,0 +1,17 @@
+{
+    "name": "AKFramework.Tags.Runtime",
+    "rootNamespace": "AKFramework.Tags.Runtime",
+    "references": [
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:f5ee14c16463f2a48ae00d42037a41ac"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

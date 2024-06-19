@@ -1,0 +1,20 @@
+{
+    "name": "AKFramework.Tags.Editor",
+    "rootNamespace": "AKFramework.Tags.Editor",
+    "references": [
+        "GUID:6d33db047dde6b64aa22244576b7798c",
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d",
+        "GUID:a733a1ec670147441b82f05ce5df0c90"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

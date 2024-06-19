@@ -1,0 +1,25 @@
+{
+    "name": "AKFramework.Scenes.Editor.NodeCanvas",
+    "rootNamespace": "AKFramework.Scenes.Editor.NodeCanvas",
+    "references": [
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d",
+        "GUID:66c2eb417c67ad849907d0769db96dbf",
+        "GUID:4b6a4f95147b18e41b49ae2da11b923b",
+        "GUID:93b18303541899d48b05193ca68a14b5",
+        "GUID:84651a3751eca9349aac36a66bba901b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "NODE_CANVAS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

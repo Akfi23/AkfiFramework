@@ -1,0 +1,21 @@
+{
+    "name": "AKFramework.Events.Runtime.NodeCanvas",
+    "rootNamespace": "",
+    "references": [
+        "GUID:66c2eb417c67ad849907d0769db96dbf",
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:18df83cbeb8ab66478661e4693156574",
+        "GUID:67d4a79b6b955cf4fb7f6db6f12b2f98"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "NODE_CANVAS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

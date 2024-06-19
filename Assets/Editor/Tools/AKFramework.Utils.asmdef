@@ -1,0 +1,18 @@
+{
+    "name": "AKFramework.Utils",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

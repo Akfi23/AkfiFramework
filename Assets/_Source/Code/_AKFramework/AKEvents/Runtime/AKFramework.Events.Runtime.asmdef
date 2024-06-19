@@ -1,0 +1,16 @@
+{
+    "name": "AKFramework.Events.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a733a1ec670147441b82f05ce5df0c90"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

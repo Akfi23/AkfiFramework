@@ -1,0 +1,22 @@
+{
+    "name": "AKFramework.ECS.Lite.Physics3D.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6a95d035d1e0d434499f1d66b5184a9d",
+        "GUID:a733a1ec670147441b82f05ce5df0c90",
+        "GUID:0f6898fff10cdd44e8c6037d4970de8b",
+        "GUID:fe770dc4969304e44abcb5cfea8c27a3",
+        "GUID:f5ee14c16463f2a48ae00d42037a41ac"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Editor"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
