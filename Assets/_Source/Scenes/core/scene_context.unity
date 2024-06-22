@@ -275,8 +275,8 @@ GameObject:
   - component: {fileID: 63627438}
   - component: {fileID: 63627443}
   - component: {fileID: 63627442}
-  - component: {fileID: 63627445}
-  - component: {fileID: 63627444}
+  - component: {fileID: 63627446}
+  - component: {fileID: 63627447}
   m_Layer: 0
   m_Name: p_context_root
   m_TagString: Untagged
@@ -372,7 +372,28 @@ MonoBehaviour:
   _updateMode: 0
   _graph: {fileID: 11400000, guid: 89e2a272a1eee471cbbca0559437f35b, type: 2}
   _blackboard: {fileID: 63627442}
---- !u!114 &63627444
+--- !u!95 &63627446
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63627437}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 044e9a01d78c748cf96807f1015909d9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &63627447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,38 +402,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 63627437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f07fea66b84943049beb5ac8f2c55ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 6567b32202e064777a19d434c47edf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value:
-    tag:
-      name: Items/Money
-      id: 939709410
-    scene:
-      name: Levels/Level 1
-      id: 39
-    screen:
-      name: Game/Game Screen
-      id: 89
-    AkEvent:
-      name: Game/Start
-      id: 28576855
-    prefab:
-      name: None
-      id: 0
---- !u!114 &63627445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63627437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71784ed8e7a9a49578be63bddc33b57a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mapChildren: 0
+  Controller: {fileID: 9100000, guid: 044e9a01d78c748cf96807f1015909d9, type: 2}
+  duration: 1.46
 --- !u!1 &114806365
 GameObject:
   m_ObjectHideFlags: 0
