@@ -1,5 +1,4 @@
 using Leopotam.EcsLite;
-using Zenject;
 using _Source.Code._AKFramework.AKECS.Runtime;
 
 namespace #NS# 
@@ -13,9 +12,11 @@ namespace #NS#
         
         //Service here
         
-        protected override void Setup(ref IEcsSystems systems, ref DiContainer container)
+        protected override void Setup(ref IEcsSystems systems, ref IAKContainer container)
         {
             _world = systems.GetWorld();
+            
+            
         }
         
         public override void Tick(ref IEcsSystems systems)
