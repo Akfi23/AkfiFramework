@@ -4,7 +4,7 @@ using _Source.Code._AKFramework.AKECS.Runtime;
 
 namespace _Source.Code.ECS.Systems
 {
-    public class #SCRIPTNAME# : AKEcsSystem
+    public class TestSystem : AKEcsSystem
     {        
         private EcsWorld _world;
         private EcsFilter _filter;

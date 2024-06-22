@@ -11,7 +11,6 @@ using _Source.Code.ECS.Systems;
 using _Source.Code.Interfaces;
 using _Source.Code.Services;
 using Leopotam.EcsLite;
-using NodeCanvas.Framework;
 using UnityEngine;
 
 namespace _Source.Code._AKFramework.Installers
@@ -82,8 +81,7 @@ namespace _Source.Code._AKFramework.Installers
                 .Init();
         
             _updateSystems
-                .Add(new RotatePlayerSystem())
-                
+                .Add(new TestSystem())
                 .Init();
         
             _lateUpdateSystems
