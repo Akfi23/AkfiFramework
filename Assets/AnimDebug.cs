@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -8,6 +9,22 @@ public class AnimDebug : MonoBehaviour
 {
     public AnimatorController Controller;
     public float duration;
+
+    private float timer;
+    private bool isTimerFinish;
+    
+    public void Update()
+    {
+        if(isTimerFinish) return;
+        
+        timer += Time.deltaTime;
+        
+        if (timer >= duration)
+        {
+            AKDebug.Log("Timer END");
+            isTimerFinish = true;
+        }
+    }
 
     [Button]
     public void DebugClipDuration()
@@ -32,13 +49,23 @@ public class AnimDebug : MonoBehaviour
     {
         foreach (var layer in Controller.layers)
         {
-            AKDebug.Log("1");
             foreach (var state in layer.stateMachine.states)
             {
+                AKDebug.Log(state.state.motion.averageDuration);
+                
+                int clipDuration = (int)((state.state.motion.averageDuration * 1f) * 60f);
+                int minutes = clipDuration / 60;
+                int seconds = clipDuration % 60;
+                string formattedTime = minutes.ToString("0") + "." + seconds.ToString("00");
+
+                if (float.TryParse(formattedTime, out var floatValue))
+                {
+                    AKDebug.Log(floatValue);
+                }
+                
                 var transitionCount = state.state.transitions.Length;
                 for (int i = 0; i < transitionCount; i++)
                 {
-                    AKDebug.Log("2");
                     var transition = state.state.transitions[i];
 
                     Debug.Log("Transition from " + state.state.name + " to " + transition.destinationState.name);
@@ -58,5 +85,10 @@ public class AnimDebug : MonoBehaviour
                 AKDebug.Log(state.state.nameHash + " NAME IS " + state.state.name);
             }
         }
+    }
+
+    public void AnimEnd()
+    {
+        AKDebug.Log("ANIM END");
     }
 }

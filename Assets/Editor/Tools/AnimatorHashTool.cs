@@ -10,12 +10,12 @@ using UnityEngine;
 
 public sealed class AnimatorHashTool : IAKEditorTool
 {
-    private const string characters_template = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+        private const string characters_template = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
         private const string numbers_template = "0123456789";
         private const string symbols_template = ".-_$#@*()[]{}+:?!&',^=<>~`";
         private const int max_characters = 256;
         
-        [Button]
+        [Button(40)]
         private static void GenerateAnimatorParametersHashes()
         {
             EditorUtility.DisplayProgressBar("Scripts Generation", "Wait a second friend...", 0);
@@ -29,7 +29,29 @@ public sealed class AnimatorHashTool : IAKEditorTool
                 AddParameters(controller, ref parameters);
             }
             
-            Generate(in parameters);
+            GenerateParametersHashes(in parameters);
+            
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            
+            EditorUtility.ClearProgressBar();
+        }
+        
+        [Button(40)]
+        private static void GenerateAnimatorClipDurations()
+        {
+            EditorUtility.DisplayProgressBar("Scripts Generation", "Wait a second friend...", 0);
+
+            var guids = AssetDatabase.FindAssets($"t:{nameof(AnimatorController)}");
+
+            var parameters = new List<StringBuilder>();
+            foreach (var guid in guids)
+            {
+                var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(AssetDatabase.GUIDToAssetPath(guid));
+                AddStateClipDurations(controller, ref parameters);
+            }
+            
+            GenerateClipDurationsHashes(in parameters);
             
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -52,8 +74,41 @@ public sealed class AnimatorHashTool : IAKEditorTool
                 }
             }
         }
+
+        private static void AddStateClipDurations(AnimatorController controller, ref List<StringBuilder> parameters)
+        {
+            foreach (var layer in controller.layers)
+            {
+                foreach (var state in layer.stateMachine.states)
+                {
+                    int clipDuration = (int) ((state.state.motion.averageDuration * 1f) * 60f);
+                    int minutes = clipDuration / 60;
+                    int seconds = clipDuration % 60;
+                    string formattedTime = minutes.ToString("0") + "." + seconds.ToString("00");
+
+                    var duration = 0f;
+                    
+                    if (float.TryParse(formattedTime, out var floatValue))
+                    {
+                        duration = floatValue;
+                    }
+
+                    var propertyName = 
+                        formatPropertyName(layer.name.Replace("/", "__") + 
+                                           "_" + state.state.name.Replace("/", "__"));
+
+                    if (string.IsNullOrWhiteSpace(propertyName)) continue;
+
+                    var line = $"{indents(2)}public static readonly float {propertyName} = {duration}f;";
+                    if (!parameters.Exists(x => x.Equals(line)))
+                    {
+                        parameters.Add(new StringBuilder(line));
+                    }
+                }
+            }
+        }
         
-        private static void Generate(in List<StringBuilder> parameters)
+        private static void GenerateParametersHashes(in List<StringBuilder> parameters)
         {
             var sbTrans = new StringBuilder();
 
@@ -70,6 +125,37 @@ public sealed class AnimatorHashTool : IAKEditorTool
             sbTrans.AppendLine("}");
             
             var generatedScriptFilePath = getPathToGeneratedFile("AnimatorHashStrings");
+
+            var filePath = Application.dataPath + "/" + generatedScriptFilePath;
+            Debug.Log(filePath);
+            var fileText = sbTrans.ToString();
+
+            var dirPath = new FileInfo(filePath).DirectoryName;
+
+            if (dirPath != null && !Directory.Exists(dirPath))
+                Directory.CreateDirectory(dirPath);
+            
+            File.WriteAllText(filePath, fileText, Encoding.UTF8);
+        }
+
+        private static void GenerateClipDurationsHashes(in List<StringBuilder> parameters)
+        {
+            var sbTrans = new StringBuilder();
+
+            sbTrans.AppendLine("namespace AKFramework.Generated");
+            sbTrans.AppendLine("{");
+            sbTrans.AppendLine($"{indents(1)}public static class AnimationsDurationHashes"); //Filename
+            sbTrans.AppendLine($"{indents(1)}{{");
+            
+            foreach (var str in parameters)
+            {
+                sbTrans.AppendLine(str.ToString());
+            }
+
+            sbTrans.AppendLine($"{indents(1)}}}");
+            sbTrans.AppendLine("}");
+            
+            var generatedScriptFilePath = getPathToGeneratedFile("AnimationsDurationHashes");
 
             var filePath = Application.dataPath + "/" + generatedScriptFilePath;
             Debug.Log(filePath);
