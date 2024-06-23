@@ -16,7 +16,7 @@ public sealed class AnimatorHashTool : IAKEditorTool
         private const int max_characters = 256;
         
         [Button]
-        private static void GenerateAnimatorHashScripts()
+        private static void GenerateAnimatorParametersHashes()
         {
             EditorUtility.DisplayProgressBar("Scripts Generation", "Wait a second friend...", 0);
 
@@ -68,8 +68,7 @@ public sealed class AnimatorHashTool : IAKEditorTool
 
             sbTrans.AppendLine($"{indents(1)}}}");
             sbTrans.AppendLine("}");
-
-
+            
             var generatedScriptFilePath = getPathToGeneratedFile("AnimatorHashStrings");
 
             var filePath = Application.dataPath + "/" + generatedScriptFilePath;

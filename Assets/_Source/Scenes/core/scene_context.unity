@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 9100000, guid: 044e9a01d78c748cf96807f1015909d9, type: 2}
-  duration: 1.46
+  duration: 1.2
 --- !u!1 &114806365
 GameObject:
   m_ObjectHideFlags: 0
