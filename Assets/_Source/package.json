@@ -1,0 +1,19 @@
+{
+  "name": "com.akfi.akframework",
+  "version": "0.1.0",
+  "displayName": "AK Ecs extension-framework",
+  "description": "Unity extension-framework via LeoEcs Lite",
+  "unity": "2022.3",
+  "documentationUrl": "https://github.com/Akfi23/AkfiFramework",
+  "changelogUrl": "https://github.com/Akfi23/AkfiFramework",
+  "licensesUrl": "https://github.com/Akfi23/AkfiFramework",
+  "dependencies": {
+    "com.leopotam.ecslite": "2023.9.2",
+    "com.leopotam.ecslite.unityeditor": "2023.9.2"
+  },
+  "author": {
+    "name": "Akfi 708",
+    "email": "708.akfi@gmail.com",
+    "url": "https://github.com/Akfi23/AkfiFramework"
+  }
+}
