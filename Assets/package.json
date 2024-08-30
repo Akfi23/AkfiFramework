@@ -9,7 +9,8 @@
   "licensesUrl": "https://github.com/Akfi23/AkfiFramework",
   "dependencies": {
     "com.leopotam.ecslite": "2023.9.2",
-    "com.leopotam.ecslite.unityeditor": "2023.9.2"
+    "com.leopotam.ecslite.unityeditor": "2023.9.2",
+    "jillejr.newtonsoft.json-for-unity.converters": "1.1.0"
   },
   "author": {
     "name": "Akfi 708",
