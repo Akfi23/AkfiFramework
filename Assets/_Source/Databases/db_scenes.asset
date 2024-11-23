@@ -22,3 +22,9 @@ MonoBehaviour:
         _sceneAsset: {fileID: 102900000, guid: 6344901a4dd1a45d9a8d40514b84c0a6, type: 3}
         _sceneName: level_1
         _scenePath: Assets/_Source/Scenes/levels/level_1.unity
+    - _name: Level 2
+      _id: 1994321375
+      _scene:
+        _sceneAsset: {fileID: 102900000, guid: 64a8eca06635e4c0d89c5d9841ba5340, type: 3}
+        _sceneName: level_1 1
+        _scenePath: Assets/_Source/Scenes/levels/level_1 1.unity

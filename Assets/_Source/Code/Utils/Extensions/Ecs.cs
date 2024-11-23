@@ -6,7 +6,7 @@ namespace _Client_.Scripts.Utils.Extensions
 {
     public static partial class Extensions
     {
-        public static bool Has<T>(this EcsWorld world, EcsPackedEntity targetPackedEntity) where T : struct, ISFEcsRequest
+        public static bool Has<T>(this EcsWorld world, EcsPackedEntity targetPackedEntity) where T : struct, IAKEcsRequest
         {
             foreach (var entity in world.Filter<T>().End())
             {
@@ -18,7 +18,7 @@ namespace _Client_.Scripts.Utils.Extensions
             return false;
         }
         
-        public static bool Has<T> (this EcsWorld world, EcsPackedEntity targetPackedEntity, out EcsPackedEntity packedEntity) where T : struct, ISFEcsRequest
+        public static bool Has<T> (this EcsWorld world, EcsPackedEntity targetPackedEntity, out EcsPackedEntity packedEntity) where T : struct, IAKEcsRequest
         {
             foreach (var entity in world.Filter<T>().End())
             {
@@ -35,7 +35,7 @@ namespace _Client_.Scripts.Utils.Extensions
             return false;
         }
         
-        public static bool Has<T> (this EcsWorld world, EcsPackedEntity targetPackedEntity, out List<EcsPackedEntity> packedEntity) where T : struct, ISFEcsRequest
+        public static bool Has<T> (this EcsWorld world, EcsPackedEntity targetPackedEntity, out List<EcsPackedEntity> packedEntity) where T : struct, IAKEcsRequest
         {
             packedEntity = new List<EcsPackedEntity>();
             
