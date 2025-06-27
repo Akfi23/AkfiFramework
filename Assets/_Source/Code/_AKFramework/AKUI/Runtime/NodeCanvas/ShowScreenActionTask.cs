@@ -7,7 +7,7 @@ using ParadoxNotion.Design;
 
 namespace _Source.Code._AKFramework.AKUI.Runtime.NodeCanvas
 {
-    [Category("SFramework/UI")]
+    [Category("AKFramework/UI")]
     [Name("Show Screen")]
     [Serializable]
     public class ShowScreenActionTask : AKActionTask
