@@ -17,7 +17,7 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
         private readonly List<AKScene> _loadingScenes = new List<AKScene>();
         private readonly Dictionary<AKScene, string> _availableScenes = new Dictionary<AKScene, string>();
         private readonly Dictionary<AKScene, Scene> _loadedScenes = new Dictionary<AKScene, Scene>();
-        private readonly Dictionary<Scene, AKScene> _sceneToSFScene = new Dictionary<Scene, AKScene>();
+        private readonly Dictionary<Scene, AKScene> _sceneToAKScene = new Dictionary<Scene, AKScene>();
         private readonly Dictionary<AKScenesGroup, AKScene[]> _scenesMap = new Dictionary<AKScenesGroup, AKScene[]>();
 
         [AKInject]
@@ -25,25 +25,25 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
         {
             foreach (var groupContainer in database.Groups)
             {
-                var sfSceneGroup = new AKScenesGroup(groupContainer._Id, groupContainer._Name);
-                var sfScenes = new AKScene[groupContainer.Scenes.Length];
+                var akSceneGroup = new AKScenesGroup(groupContainer._Id, groupContainer._Name);
+                var akScenes = new AKScene[groupContainer.Scenes.Length];
                 var i = 0;
                 foreach (var sceneContainer in groupContainer.Scenes)
                 {
-                    var sfScene = new AKScene(sceneContainer._Id, sceneContainer._Name);
-                    sfScenes[i] = sfScene;
-                    _availableScenes[sfScene] =
+                    var akScene = new AKScene(sceneContainer._Id, sceneContainer._Name);
+                    akScenes[i] = akScene;
+                    _availableScenes[akScene] =
                         sceneContainer.Scene;
                     i++;
                 }
 
-                _scenesMap[sfSceneGroup] = sfScenes;
+                _scenesMap[akSceneGroup] = akScenes;
             }
         }
 
-        public bool IsLoading(AKScene sfScene)
+        public bool IsLoading(AKScene akScene)
         {
-            return _loadingScenes.Contains(sfScene);
+            return _loadingScenes.Contains(akScene);
         }
 
         public bool IsLoading()
@@ -51,9 +51,9 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
             return _loadingScenes.Count > 0;
         }
 
-        public bool IsLoaded(AKScene sfScene)
+        public bool IsLoaded(AKScene akScene)
         {
-            return _loadedScenes.ContainsKey(sfScene);
+            return _loadedScenes.ContainsKey(akScene);
         }
 
         public Scene GetScene(AKScene scene)
@@ -61,26 +61,26 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
             return !_loadedScenes.ContainsKey(scene) ? new Scene() : _loadedScenes[scene];
         }
 
-        public bool GetActiveScene(out AKScene sfScene)
+        public bool GetActiveScene(out AKScene akScene)
         {
             var activeScene = SceneManager.GetActiveScene();
 
-            if (_sceneToSFScene.ContainsKey(activeScene))
+            if (_sceneToAKScene.ContainsKey(activeScene))
             {
-                sfScene = _sceneToSFScene[activeScene];
+                akScene = _sceneToAKScene[activeScene];
                 return true;
             }
 
-            sfScene = new AKScene();
+            akScene = new AKScene();
             return false;
         }
 
-        public async void LoadScene(AKScene sfScene, bool setActive, Action<Scene> loadCallback)
+        public async void LoadScene(AKScene akScene, bool setActive, Action<Scene> loadCallback)
         {
-            if (!_availableScenes.ContainsKey(sfScene)) return;
-            _loadingScenes.Add(sfScene);
-            OnSceneLoad.Invoke(sfScene);
-            var assetReference = _availableScenes[sfScene];
+            if (!_availableScenes.ContainsKey(akScene)) return;
+            _loadingScenes.Add(akScene);
+            OnSceneLoad.Invoke(akScene);
+            var assetReference = _availableScenes[akScene];
 
             var asyncLoad = SceneManager.LoadSceneAsync(assetReference, LoadSceneMode.Additive);
 
@@ -90,22 +90,22 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
             }
 
             var scene = SceneManager.GetSceneByPath(assetReference);
-            _loadingScenes.Remove(sfScene);
-            _loadedScenes[sfScene] = scene;
-            _sceneToSFScene[scene] = sfScene;
+            _loadingScenes.Remove(akScene);
+            _loadedScenes[akScene] = scene;
+            _sceneToAKScene[scene] = akScene;
             if (setActive)
                 SceneManager.SetActiveScene(scene);
             loadCallback?.Invoke(scene);
-            OnSceneLoaded.Invoke(sfScene);
+            OnSceneLoaded.Invoke(akScene);
         }
 
-        public async void UnloadScene(AKScene sfScene, Action unloadCallback = null)
+        public async void UnloadScene(AKScene akScene, Action unloadCallback = null)
         {
-            if (!_loadedScenes.ContainsKey(sfScene)) return;
-            _loadingScenes.Add(sfScene);
-            OnSceneUnload.Invoke(sfScene);
+            if (!_loadedScenes.ContainsKey(akScene)) return;
+            _loadingScenes.Add(akScene);
+            OnSceneUnload.Invoke(akScene);
 
-            var sceneInstance = _loadedScenes[sfScene];
+            var sceneInstance = _loadedScenes[akScene];
 
             var asyncLoad = SceneManager.UnloadSceneAsync(sceneInstance);
 
@@ -114,31 +114,31 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
                 await Task.Yield();
             }
 
-            _loadingScenes.Remove(sfScene);
-            _loadedScenes.Remove(sfScene);
-            _sceneToSFScene.Remove(sceneInstance);
+            _loadingScenes.Remove(akScene);
+            _loadedScenes.Remove(akScene);
+            _sceneToAKScene.Remove(sceneInstance);
             unloadCallback?.Invoke();
-            OnSceneUnloaded.Invoke(sfScene);
+            OnSceneUnloaded.Invoke(akScene);
         }
 
-        public async void ReloadScene(AKScene sfScene, Action unloadCallback = null,
+        public async void ReloadScene(AKScene akScene, Action unloadCallback = null,
             Action<Scene> loadCallback = null)
         {
             var isActiveScene = false;
 
             if (GetActiveScene(out AKScene activeScene))
             {
-                if (sfScene == activeScene)
+                if (akScene == activeScene)
                 {
                     isActiveScene = true;
                 }
             }
 
-            if (!_loadedScenes.ContainsKey(sfScene)) return;
-            _loadingScenes.Add(sfScene);
-            OnSceneUnload.Invoke(sfScene);
+            if (!_loadedScenes.ContainsKey(akScene)) return;
+            _loadingScenes.Add(akScene);
+            OnSceneUnload.Invoke(akScene);
 
-            var sceneInstance = _loadedScenes[sfScene];
+            var sceneInstance = _loadedScenes[akScene];
 
             var asyncLoad = SceneManager.UnloadSceneAsync(sceneInstance);
 
@@ -147,16 +147,16 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
                 await Task.Yield();
             }
 
-            _loadingScenes.Remove(sfScene);
-            _loadedScenes.Remove(sfScene);
-            _sceneToSFScene.Remove(sceneInstance);
+            _loadingScenes.Remove(akScene);
+            _loadedScenes.Remove(akScene);
+            _sceneToAKScene.Remove(sceneInstance);
             unloadCallback?.Invoke();
-            OnSceneUnloaded.Invoke(sfScene);
+            OnSceneUnloaded.Invoke(akScene);
 
-            if (!_availableScenes.ContainsKey(sfScene)) return;
-            _loadingScenes.Add(sfScene);
-            OnSceneLoad.Invoke(sfScene);
-            var assetReference = _availableScenes[sfScene];
+            if (!_availableScenes.ContainsKey(akScene)) return;
+            _loadingScenes.Add(akScene);
+            OnSceneLoad.Invoke(akScene);
+            var assetReference = _availableScenes[akScene];
 
             asyncLoad = SceneManager.LoadSceneAsync(assetReference, LoadSceneMode.Additive);
 
@@ -166,16 +166,16 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
             }
 
             var scene = SceneManager.GetSceneByPath(assetReference);
-            _loadingScenes.Remove(sfScene);
-            _loadedScenes[sfScene] = scene;
-            _sceneToSFScene[scene] = sfScene;
+            _loadingScenes.Remove(akScene);
+            _loadedScenes[akScene] = scene;
+            _sceneToAKScene[scene] = akScene;
             if (isActiveScene)
                 SceneManager.SetActiveScene(scene);
             loadCallback?.Invoke(scene);
-            OnSceneLoaded.Invoke(sfScene);
+            OnSceneLoaded.Invoke(akScene);
         }
 
-        public AKScene[] GetSFScenes(AKScenesGroup scenesGroup)
+        public AKScene[] GetAKScenes(AKScenesGroup scenesGroup)
         {
             return _scenesMap.ContainsKey(scenesGroup) ? _scenesMap[scenesGroup] : Array.Empty<AKScene>();
         }
