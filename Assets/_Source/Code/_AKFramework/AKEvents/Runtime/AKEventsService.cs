@@ -247,5 +247,118 @@ namespace _Source.Code._AKFramework.AKEvents.Runtime
 
             AKDebug.Log("\n");
         }
+
+        //         private readonly Dictionary<AKEvent, List<AKCallback>> table0 = new();
+        // private readonly Dictionary<AKEvent, List<object>> table1 = new();
+        // private readonly Dictionary<AKEvent, List<object>> table2 = new();
+        // private readonly Dictionary<AKEvent, List<object>> table3 = new();
+        // private readonly Dictionary<AKEvent, List<object>> table4 = new();
+
+        // #region Listener
+
+        // public void AddListener(AKEvent e, AKCallback h) => add(table0, e, h);
+        // public void RemoveListener(AKEvent e, AKCallback h) => remove(table0, e, h);
+
+        // public void AddListener<T1>(AKEvent e, AKCallback<T1> h) => add(table1, e, h);
+        // public void RemoveListener<T1>(AKEvent e, AKCallback<T1> h) => remove(table1, e, h);
+
+        // public void AddListener<T1, T2>(AKEvent e, AKCallback<T1, T2> h) => add(table2, e, h);
+        // public void RemoveListener<T1, T2>(AKEvent e, AKCallback<T1, T2> h) => remove(table2, e, h);
+
+        // public void AddListener<T1, T2, T3>(AKEvent e, AKCallback<T1, T2, T3> h) => add(table3, e, h);
+        // public void RemoveListener<T1, T2, T3>(AKEvent e, AKCallback<T1, T2, T3> h) => remove(table3, e, h);
+
+        // public void AddListener<T1, T2, T3, T4>(AKEvent e, AKCallback<T1, T2, T3, T4> h) => add(table4, e, h);
+        // public void RemoveListener<T1, T2, T3, T4>(AKEvent e, AKCallback<T1, T2, T3, T4> h) => remove(table4, e, h);
+
+        // #endregion
+
+        // #region Broadcast
+
+        // public void Broadcast(AKEvent e)
+        // {
+        //     if (!table0.TryGetValue(e, out var list)) return;
+
+        //     for (int i = list.Count - 1; i >= 0; i--)
+        //     {
+        //         var cb = list[i];
+        //         if (cb == null || (cb.Target is UnityEngine.Object uo && uo == null))
+        //         {
+        //             list.RemoveAt(i);
+        //             continue;
+        //         }
+        //         try { cb(e); }
+        //         catch (Exception ex) { Debug.LogError($"[AKEvents] {ex}"); }
+        //     }
+        //     if (list.Count == 0) table0.Remove(e);
+        // }
+
+        // public void Broadcast<T1>(AKEvent e, T1 a1)
+        //     => broadcast(table1, e, (AKCallback<T1> cb) => cb(e, a1));
+
+        // public void Broadcast<T1, T2>(AKEvent e, T1 a1, T2 a2)
+        //     => broadcast(table2, e, (AKCallback<T1, T2> cb) => cb(e, a1, a2));
+
+        // public void Broadcast<T1, T2, T3>(AKEvent e, T1 a1, T2 a2, T3 a3)
+        //     => broadcast(table3, e, (AKCallback<T1, T2, T3> cb) => cb(e, a1, a2, a3));
+
+        // public void Broadcast<T1, T2, T3, T4>(AKEvent e, T1 a1, T2 a2, T3 a3, T4 a4)
+        //     => broadcast(table4, e, (AKCallback<T1, T2, T3, T4> cb) => cb(e, a1, a2, a3, a4));
+
+        // #endregion
+
+        // #region Helpers
+
+        // private static void add<T>(Dictionary<AKEvent, List<T>> table, AKEvent e, T h) where T : class
+        // {
+        //     if (e.IsNone || h == null) return;
+        //     if (!table.TryGetValue(e, out var list))
+        //     {
+        //         list = new List<T>(4);
+        //         table[e] = list;
+        //     }
+        //     if (!list.Contains(h)) list.Add(h);
+        // }
+
+        // private static void remove<T>(Dictionary<AKEvent, List<T>> table, AKEvent e, T h) where T : class
+        // {
+        //     if (e.IsNone || h == null) return;
+        //     if (!table.TryGetValue(e, out var list)) return;
+
+        //     list.Remove(h);
+        //     if (list.Count == 0) table.Remove(e);
+        // }
+
+        // private static void broadcast<T>(Dictionary<AKEvent, List<object>> table, AKEvent e, Action<T> invoke) where T : class
+        // {
+        //     if (!table.TryGetValue(e, out var list)) return;
+
+        //     for (int i = list.Count - 1; i >= 0; i--)
+        //     {
+        //         if (list[i] is not T cb)
+        //         {
+        //             list.RemoveAt(i);
+        //             continue;
+        //         }
+
+        //         if (cb is Delegate d && d.Target is UnityEngine.Object uo && uo == null)
+        //         {
+        //             list.RemoveAt(i);
+        //             continue;
+        //         }
+
+        //         try { invoke(cb); }
+        //         catch (Exception ex) { Debug.LogError($"[AKEvents] {ex}"); }
+        //     }
+        //     if (list.Count == 0) table.Remove(e);
+        // }
+
+        // #endregion
+
+        // public void PrintEventTable()
+        // {
+        //     Debug.Log("=== AKEvents EventTable ===");
+        //     Debug.Log($"NoArgs: {table0.Count}, Args1: {table1.Count}, Args2: {table2.Count}, Args3: {table3.Count}, Args4: {table4.Count}");
+        // }
     }
 }
