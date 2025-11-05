@@ -35,7 +35,10 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
         public static bool GetEntity(in GameObject gameObject, in EcsWorld world, out int entity)
         {
             var instanceId = gameObject.GetInstanceID();
-            if (_packedEntities.ContainsKey(instanceId)) return _packedEntities[instanceId].Unpack(world, out entity);
+            if (_packedEntities.TryGetValue(instanceId, out var packedEntity))
+            {
+                return packedEntity.Unpack(world, out entity);
+            }
             entity = default;
             return false;
         }
@@ -45,9 +48,8 @@ namespace _Source.Code._AKFramework.AKECS.Runtime
         {
             var instanceId = gameObject.GetInstanceID();
 
-            if (_packedEntities.ContainsKey(instanceId))
+            if (_packedEntities.TryGetValue(instanceId, out packedEntity))
             {
-                packedEntity = _packedEntities[instanceId];
                 return true;
             }
 
