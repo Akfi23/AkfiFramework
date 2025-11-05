@@ -214,7 +214,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using _Source.Code._AKFramework.AKCore.Runtime;
 using _Source.Code._AKFramework.AKECS.Runtime;
 using Leopotam.EcsLite;
@@ -226,10 +225,8 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
 {
     public class AKPoolsService : IAKPoolsService
     {
-        [AKInject]
-        private readonly IAKContainer _container;
-        [AKInject]
-        private readonly AKPoolsDatabase _akPoolsDatabase;
+        [AKInject] private readonly IAKContainer _container;
+        [AKInject] private readonly AKPoolsDatabase _akPoolsDatabase;
         public Action<GameObject, bool> OnPoolSpawn { get; set; } = delegate { };
         public Action<GameObject> OnPoolDespawn { get; set; } = delegate { };
         public bool IsInitialized { get; private set; } = false;
@@ -237,14 +234,13 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
         private readonly Dictionary<AKPrefab, IObjectPool<GameObject>> _akPrefabToPool = new();
         private readonly Dictionary<GameObject, AKPrefab> _instanceToAKPrefab = new();
         private Transform _poolParent;
-       
+
 #if ECS_EXIST
         private EcsWorld _ecsWorld;
-        [AKInject]
-        private IAKWorldService _worldsService;
-        private Type[] _removeComponentTypes;
+        [AKInject] private IAKWorldService _worldsService;
         private IEcsPool[] _removePools;
         private readonly Dictionary<GameObject, IAKPoolReset[]> _instanceToReset = new();
+        private readonly Dictionary<GameObject, int> _instanceToEntity = new();
 #endif
         [AKInject]
         protected async void Init()
@@ -264,34 +260,33 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                     }
                 }
             }
-            _removeComponentTypes = removeTypesList.ToArray();
 
-            _removePools = new IEcsPool[_removeComponentTypes.Length];
-            for (int i = 0; i < _removeComponentTypes.Length; i++)
+            _removePools = new IEcsPool[removeTypesList.Count];
+            for (int i = 0; i < removeTypesList.Count; i++)
             {
-                _removePools[i] = _ecsWorld.GetPoolByType(_removeComponentTypes[i]);
+                _removePools[i] = _ecsWorld.GetPoolByType(removeTypesList[i]);
             }
 #endif
-           
+
             _poolParent = new GameObject("[~AK-POOL-PARENT~]").transform;
             foreach (var prefabsGroupContainer in _akPoolsDatabase.PrefabsGroupContainers)
             {
                 foreach (var prefabContainer in prefabsGroupContainer.PrefabContainers)
                 {
                     var prefabData = prefabContainer.PrefabData;
-                   
+
                     if (prefabData == null) continue;
                     if (!prefabData.PrefabAssetReference.RuntimeKeyIsValid()) continue;
-                   
+
                     var loadAssetAsync = prefabData.PrefabAssetReference.LoadAssetAsync<GameObject>();
                     await loadAssetAsync.Task;
-                   
+
                     var gameObject = loadAssetAsync.Result;
                     var akPrefabId = prefabContainer._Id;
                     var akPrefabName = $"{prefabsGroupContainer._Name}/{prefabContainer._Name}";
                     var akPrefab = new AKPrefab(akPrefabId, akPrefabName);
                     _akPrefabToAsset[akPrefab] = gameObject;
-                   
+
                     ObjectPool<GameObject> objectPool = null;
                     objectPool = new ObjectPool<GameObject>(() =>
                         {
@@ -304,6 +299,11 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                             {
                                 _instanceToReset[_gameObject] = resetComponents;
                             }
+
+                            if (AKEntityMappingService.GetEntity(in _gameObject, in _ecsWorld, out var entity))
+                            {
+                                _instanceToEntity[_gameObject] = entity;
+                            }
 #endif
                             return _gameObject;
                         },
@@ -312,7 +312,7 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                         {
                             go.transform.SetParent(_poolParent);
 #if ECS_EXIST
-                            if (AKEntityMappingService.GetEntity(in go, in _ecsWorld, out var goEntity))
+                            if (_instanceToEntity.TryGetValue(go, out var goEntity))
                             {
                                 for (int i = 0; i < _removePools.Length; i++)
                                 {
@@ -322,11 +322,12 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                                         pool.Del(goEntity);
                                     }
                                 }
+
                                 if (_instanceToReset.TryGetValue(go, out var resets))
                                 {
-                                    for (int i = 0; i < resets.Length; i++)
+                                    for (int j = 0; j < resets.Length; j++)
                                     {
-                                        resets[i].Reset();
+                                        resets[j].Reset();
                                     }
                                 }
                             }
@@ -339,6 +340,7 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                             _instanceToAKPrefab.Remove(go);
 #if ECS_EXIST
                             _instanceToReset.Remove(go);
+                            _instanceToEntity.Remove(go);
 #endif
                         },
                         prefabData.CollectionChecks, prefabData.DefaultCapacity, prefabData.MaxPoolSize);
@@ -349,15 +351,17 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                         Spawn(akPrefab, new AKPrefabSpawnSettings(), out var go);
                         initInstance[i] = go;
                     }
+
                     foreach (var go in initInstance)
                     {
                         Despawn(go);
                     }
                 }
             }
+
             IsInitialized = true;
         }
-       
+
         public bool Spawn(AKPrefab prefab, AKPrefabSpawnSettings settings, out GameObject gameObject)
         {
             if (!_akPrefabToPool.TryGetValue(prefab, out var pool))
@@ -366,27 +370,29 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                 OnPoolSpawn.Invoke(gameObject, false);
                 return false;
             }
+
             gameObject = pool.Get();
             var transform = gameObject.transform;
             if (settings.Position.HasValue)
                 transform.position = settings.Position.Value;
-           
+
             if (settings.Rotation.HasValue)
                 transform.rotation = settings.Rotation.Value;
-           
+
 #if ECS_EXIST
-            if (AKEntityMappingService.GetEntity(in gameObject, in _ecsWorld, out var entity))
+            if (_instanceToEntity.TryGetValue(gameObject, out var entity))
             {
                 ref var transformRef = ref _ecsWorld.GetPool<TransformRef>().Get(entity);
                 if (settings.Position.HasValue) transformRef.InitialPosition = settings.Position.Value;
                 if (settings.Rotation.HasValue) transformRef.InitialRotation = settings.Rotation.Value;
             }
-               
 #endif
+            
             transform.SetParent(settings.Parent != null ? settings.Parent : null);
             OnPoolSpawn.Invoke(gameObject, true);
             return true;
         }
+
         public bool Spawn<T>(AKPrefab prefab, AKPrefabSpawnSettings settings, out T component) where T : Component
         {
             if (Spawn(prefab, settings, out var gameObject))
@@ -394,10 +400,11 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
                 component = gameObject.GetComponent<T>();
                 return true;
             }
-           
+
             component = null;
             return false;
         }
+
         public bool Despawn(GameObject gameObject)
         {
             if (!gameObject.activeSelf) return false;
@@ -407,12 +414,16 @@ namespace _Source.Code._AKFramework.AKPools.Runtime
             OnPoolDespawn.Invoke(gameObject);
             return true;
         }
+
         public void DespawnAll()
         {
-            var keys = _instanceToAKPrefab.Keys.ToArray();
-            foreach (var key in keys)
+            var count = _instanceToAKPrefab.Count;
+            if (count == 0) return;
+            var keys = new GameObject[count];
+            _instanceToAKPrefab.Keys.CopyTo(keys, 0);
+            for (int i = 0; i < count; i++)
             {
-                Despawn(key);
+                Despawn(keys[i]);
             }
         }
     }
