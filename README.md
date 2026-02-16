@@ -37,6 +37,6 @@ A lightweight, production-ready template for scalable Unity games. Combines **bl
   Raycasts, collisions, and triggers handled natively in systems — no GameObject overhead.
 
 - **⚙️ Code Generation**  
-  Auto-generates providers, systems, and bindings from attributes. Edit once, deploy everywhere.
+  Auto-generates providers, systems, and bindings from attributes.
 
 ---
