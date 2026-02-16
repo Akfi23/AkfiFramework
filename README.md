@@ -3,7 +3,7 @@
 **🚀 High-Performance ECS Framework for Unity**  
 *LeoECS Lite + Custom DI Container + Code Generation*
 
-A lightweight, production-ready template for scalable Unity games. Combines **blazing-fast ECS** with a **custom IoC/DI container**, codegen tools, and battle-tested services — zero boilerplate, full ECS integration for entities, data, UI, and more.
+A lightweight, production-ready template for scalable Unity games. Combines **blazing-fast ECS** with a **custom IoC/DI container**, codegen tools, and battle-tested services — less boilerplate, full ECS integration for entities, data, UI, and more.
 
 ---
 
