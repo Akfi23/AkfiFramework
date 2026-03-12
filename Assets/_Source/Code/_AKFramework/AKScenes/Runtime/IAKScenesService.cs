@@ -14,7 +14,7 @@ namespace _Source.Code._AKFramework.AKScenes.Runtime
         bool IsLoading(AKScene akScene);
         bool IsLoading();
         bool IsLoaded(AKScene akScene);
-        AKScene[] GetSFScenes(AKScenesGroup scenesGroup);
+        AKScene[] GetAKScenes(AKScenesGroup scenesGroup);
         bool GetActiveScene(out AKScene akScene);
         Scene GetScene(AKScene akScene);
         void LoadScene(AKScene akScene, bool setActive, Action<Scene> loadCallback = null);
