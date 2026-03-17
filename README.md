@@ -40,3 +40,7 @@ A lightweight, production-ready template for scalable Unity games. Combines **bl
   Auto-generates providers, systems, and bindings from attributes.
 
 ---
+
+
+A pilot project on the use of the framework in practice
+https://github.com/Akfi23/CrowdBattle
